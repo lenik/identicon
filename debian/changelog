@@ -1,3 +1,17 @@
+identicon (0.1.0) unstable; urgency=medium
+
+  * Generate kaleidoscope, wavatar, monsterid, retro, and robo avatars
+    from a UTF-8 ID.
+  * Add CLI flags for salt, output file, type, format, size, background
+    color, and force overwrite.
+  * Give identicon geometric tiles with left-right symmetry instead of
+    fat-pixel upscale.
+  * Scale retro face detail with output size (16/32/64/128/256).
+  * Vary robo limbs, faces, and antennas; keep arms attached and belly
+    details inside the body.
+
+ -- Lenik (谢继雷) <lenik@bodz.net>  Tue, 06 Oct 2026 17:15:05 +0800
+
 identicon (0.0.1) unstable; urgency=medium
 
   * Initial release

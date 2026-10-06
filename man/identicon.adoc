@@ -9,27 +9,68 @@ v{project-version}, {project-year}
 
 == Name
 
-identicon - concatenate files to standard output
+identicon - generate a deterministic avatar image from an identifier
 
 == Synopsis
 
-*identicon* [_OPTION_]... [_FILE_]...
+*identicon* [_OPTION_]... _ID_
 
 == Description
 
-Copy each _FILE_ to standard output in order.
-If _FILE_ is a single dash (*-*), read standard input at that position.
-If no _FILE_ is given, read standard input once.
+Render a square avatar image from _ID_.
+The same _ID_ (and optional salt) always produces the same picture.
 
-*identicon* is similar in spirit to *cat*(1): it writes the concatenation of
-inputs to standard output.
+_ID_ and *--salt* values are encoded as UTF-8 before hashing.
+Without a salt, the digest is SHA-256 of the identifier.
+With a salt, the digest is HMAC-SHA-256 using the salt as the key.
+
+Output is written to standard output as PNG unless *--out* or *--format* says
+otherwise.
 
 == Options
 
+*-s, --salt* _SALT_::
+  Mix _SALT_ into the hash so the same identifier can yield a different family
+  of avatars.
+
+*-o, --out* _FILE_::
+  Write the image to _FILE_ instead of standard output.
+  The filename extension selects the format when *--format* is omitted.
+  Use *-* for standard output.
+
+*-t, --type* _TYPE_::
+  Avatar style. One of:
+
+  *identicon*;;
+    Kaleidoscopic pixel pattern (default).
+  *wavatar*;;
+    Cartoon faces with varying expressions and background colors.
+  *monsterid*;;
+    Colorful pixel monsters with distinctive looks.
+  *retro*;;
+    8-bit NES-era pixel faces.
+  *robo*;;
+    Cute little robots.
+
+*-F, --format* _FMT_::
+  Image format such as *png*, *jpg*, *gif*, or *bmp*.
+  Default is *png*, or the extension of *--out*.
+
+*-S, --size* _PIXELS_::
+  Width and height in pixels. Default is 256. Allowed range is 1 to 4096.
+
+*-b, --backcolor* _COLOR_::
+  Background color. Accepts a CSS name (*red*), hex (*#f00*, *#ff0000*), or
+  *rgb()* / *hsl()* / *rgba()* / *hsla()* functions.
+  *transparent* and *none* request a fully transparent background (composited
+  on white for formats without alpha).
+
+*-f, --force*::
+  Overwrite _FILE_ if it already exists.
+
 *-v, --verbose*::
-  Print each file name (or ``standard input`` for *-*) to standard error
-  before copying that input.
-  Repeat for more verbose logging.
+  Print a short summary of type, size, format, and destination to standard
+  error. Repeat for the hash hex.
 
 *-q, --quiet*::
   Suppress messages that would be printed by *--verbose*.
@@ -47,7 +88,19 @@ inputs to standard output.
   Success.
 
 *1*::
-  An error occurred (invalid options, unreadable file, or I/O error).
+  An error occurred (invalid options, existing output file without *--force*,
+  or I/O error).
+
+== Examples
+
+Generate a default identicon as PNG on standard output::
+  identicon alice@example.com >alice.png
+
+Write a 128-pixel retro face, overwriting if needed::
+  identicon -t retro -S 128 -o face.png -f bob
+
+Salted robot JPEG::
+  identicon -s office -t robo -F jpg -o bot.jpg team-42
 
 == Author
 

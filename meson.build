@@ -53,15 +53,17 @@ identicon_exe = custom_target(
     install_dir: bindir,
 )
 
-commons_mod = custom_target(
-    'commons',
-    input: 'src/commons.py',
-    output: 'commons.py',
-    command: ['cp', '@INPUT@', '@OUTPUT@'],
-    build_by_default: true,
-    install: true,
-    install_dir: bindir,
-)
+foreach mod : ['commons.py', 'styles.py']
+    custom_target(
+        mod,
+        input: 'src' / mod,
+        output: mod,
+        command: ['cp', '@INPUT@', '@OUTPUT@'],
+        build_by_default: true,
+        install: true,
+        install_dir: bindir,
+    )
+endforeach
 
 install_data(
     'identicon.bash',

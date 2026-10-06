@@ -1,42 +1,56 @@
 # identicon
 
-`identicon` is a Python + Meson project template for small command-line apps.
-`identicon` is one **example app** in this template; more apps can be added in the same repository.
+`identicon` generates a deterministic square avatar from an identifier.
+The same ID (and optional salt) always yields the same picture.
+
+```bash
+identicon [OPTION]... ID
+```
+
+ID and salt are encoded as UTF-8. Without `--salt`, the digest is SHA-256 of
+the identifier. With a salt, it is HMAC-SHA-256 (salt as key).
+
+Default output is a 256×256 PNG on stdout.
+
+### Options
+
+- `-s`, `--salt SALT` — mix salt into the hash
+- `-o`, `--out FILE` — write to FILE (format follows the extension; default stdout)
+- `-t`, `--type TYPE` — avatar style:
+  - `identicon` — kaleidoscopic pixel pattern (default)
+  - `wavatar` — cartoon faces with varying expressions and backgrounds
+  - `monsterid` — colorful pixel monsters
+  - `retro` — 8-bit NES-era pixel faces
+  - `robo` — cute little robots
+- `-F`, `--format FMT` — `png`, `jpg`, `gif`, `bmp`, …
+- `-S`, `--size PIXELS` — output size (default 256)
+- `-b`, `--backcolor COLOR` — `red`, `#f00`, `#ff0000`, or `rgb()` / `hsl()` / `rgba()` / `hsla()`
+- `-f`, `--force` — overwrite FILE
+- `-v`, `--verbose` / `-q`, `--quiet` / `-h`, `--help` / `--version`
+
+### Examples
+
+```bash
+identicon alice@example.com >alice.png
+identicon -t retro -S 128 -o face.png -f bob
+identicon -s office -t robo -F jpg -o bot.jpg team-42
+```
 
 ## Repository layout
 
-- `src/` - Python sources (`identicon.py` example app and `commons.py` shared helpers)
+- `src/` - Python sources (`identicon.py`, `styles.py`, `commons.py`)
 - `tests/` - Python unit tests (`unittest`)
 - `debian/` - Debian packaging metadata
 - `po/` - gettext message catalogs
 - `man/` - AsciiDoc man page sources (`man/*.adoc`)
 - `meson.build` - install rules, tests, and helper targets
 
-## Example app: `identicon`
-
-`identicon` is a cat-like utility:
-
-```bash
-identicon [OPTION]... [FILE]...
-```
-
-- If no `FILE` is provided, it reads from `stdin`.
-- If a `FILE` is `-`, it reads from `stdin` at that position.
-- Output is written to `stdout`.
-
-Supported options:
-
-- `-v`, `--verbose`
-- `-q`, `--quiet`
-- `-h`, `--help`
-- `--version`
-
 ## Build and test
 
 ### Build dependencies (Debian example)
 
 ```bash
-sudo apt install meson ninja-build python3 gettext asciidoctor
+sudo apt install meson ninja-build python3 python3-pil gettext asciidoctor
 ```
 
 ### Configure and build

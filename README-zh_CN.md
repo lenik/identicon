@@ -1,42 +1,55 @@
 # identicon
 
-`identicon` 是一个 Python + Meson 命令行应用项目模板。  
-`identicon` 是此模板中的一个**示例应用**；同一仓库中可以继续添加更多应用。
+`identicon` 根据标识符生成确定性的方形头像。  
+同一 ID（以及可选的盐）总会得到同一张图。
+
+```bash
+identicon [选项]... ID
+```
+
+ID 与盐按 UTF-8 编码。未指定 `--salt` 时，摘要为标识符的 SHA-256；指定盐时，摘要为以盐为密钥的 HMAC-SHA-256。
+
+默认在标准输出写出 256×256 的 PNG。
+
+### 选项
+
+- `-s`, `--salt SALT` — 将盐混入哈希
+- `-o`, `--out FILE` — 写入 FILE（格式由扩展名推断；默认标准输出）
+- `-t`, `--type TYPE` — 头像风格：
+  - `identicon` — 万花筒像素图案（默认）
+  - `wavatar` — 表情与背景色各异的卡通小脸
+  - `monsterid` — 长相独特的彩色像素小怪物
+  - `retro` — 红白机时代的 8-bit 复古像素人脸
+  - `robo` — 超萌小机器人
+- `-F`, `--format FMT` — `png`、`jpg`、`gif`、`bmp` 等
+- `-S`, `--size PIXELS` — 边长像素（默认 256）
+- `-b`, `--backcolor COLOR` — `red`、`#f00`、`#ff0000`，或 `rgb()` / `hsl()` / `rgba()` / `hsla()`
+- `-f`, `--force` — 覆盖已存在的 FILE
+- `-v`, `--verbose` / `-q`, `--quiet` / `-h`, `--help` / `--version`
+
+### 示例
+
+```bash
+identicon alice@example.com >alice.png
+identicon -t retro -S 128 -o face.png -f bob
+identicon -s office -t robo -F jpg -o bot.jpg team-42
+```
 
 ## 仓库结构
 
-- `src/` - Python 源码（示例 `identicon.py` 与共享辅助模块 `commons.py`）
+- `src/` - Python 源码（`identicon.py`、`styles.py`、`commons.py`）
 - `tests/` - Python 单元测试（`unittest`）
 - `debian/` - Debian 打包元数据
 - `po/` - gettext 翻译目录
 - `man/` - AsciiDoc man 页源文件（`man/*.adoc`）
 - `meson.build` - 安装、测试与辅助目标
 
-## 示例应用：`identicon`
-
-`identicon` 是一个类似 `cat` 的工具：
-
-```bash
-identicon [OPTION]... [FILE]...
-```
-
-- 如果未提供 `FILE`，则从 `stdin` 读取。
-- 如果某个 `FILE` 为 `-`，则在该位置从 `stdin` 读取。
-- 输出写入 `stdout`。
-
-支持的选项：
-
-- `-v`, `--verbose`
-- `-q`, `--quiet`
-- `-h`, `--help`
-- `--version`
-
 ## 构建与测试
 
 ### 构建依赖（Debian 示例）
 
 ```bash
-sudo apt install meson ninja-build python3 gettext asciidoctor
+sudo apt install meson ninja-build python3 python3-pil gettext asciidoctor
 ```
 
 ### 配置并构建
