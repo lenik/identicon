@@ -1,0 +1,18 @@
+Source: identicon
+Section: utils
+Priority: optional
+Maintainer: Lenik <identicon@bodz.net>
+Build-Depends: debhelper-compat (= 13), meson, ninja-build, python3, gettext, asciidoctor
+Standards-Version: 4.6.0
+Homepage: https://github.com/lenik/identicon
+Rules-Requires-Root: no
+
+Package: identicon
+Architecture: any
+Depends: 
+    python3, 
+    ${misc:Depends}
+Description: Meson-based CLI project template with example app
+ identicon is a template repository for small Python command-line utilities.
+ It currently ships the identicon example application and Debian packaging
+ metadata, and includes Python unittest integration.
