@@ -18,7 +18,8 @@ from runtime import (
     program_version,
     save_image,
 )
-from styles import TYPES, normalize_type, render
+from robohash_style import MissingRobohashError
+from styles import TYPE_CHOICES, normalize_type, render
 
 DEFAULT_SIZE = 256
 DEFAULT_FORMAT = "PNG"
@@ -47,6 +48,18 @@ def usage(out: TextIO) -> None:
     out.write(_("8-bit NES-era pixel faces\n"))
     out.write("                      robo        ")
     out.write(_("cute little robots\n"))
+    out.write("                      1, set1     ")
+    out.write(_("Robohash classic robots\n"))
+    out.write("                      2, set2     ")
+    out.write(_("Robohash monsters\n"))
+    out.write("                      3, set3     ")
+    out.write(_("Robohash robot heads\n"))
+    out.write("                      4, set4     ")
+    out.write(_("Robohash cats\n"))
+    out.write("                      5, set5     ")
+    out.write(_("Robohash human avatars\n"))
+    out.write("                      6, set6     ")
+    out.write(_("Robohash cosmic apes\n"))
     out.write("  -F, --format FMT   ")
     out.write(_("image format: jpg, gif, png, bmp, ... (default: png)\n"))
     out.write("  -S, --size PIXELS  ")
@@ -164,7 +177,7 @@ def main(argv: list[str]) -> int:
             program,
             _("unknown type {value!r} (expected {types})").format(
                 value=kind,
-                types=", ".join(TYPES),
+                types=TYPE_CHOICES,
             ),
         )
 
@@ -200,7 +213,10 @@ def main(argv: list[str]) -> int:
         )
 
     digest = digest_for(ident, salt)
-    img = render(kind, digest, size, back)
+    try:
+        img = render(kind, digest, size, back)
+    except MissingRobohashError as e:
+        return _error(program, str(e))
 
     if verbose > 0:
         dest_label = dest_path if dest_path else "-"

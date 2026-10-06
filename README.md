@@ -22,6 +22,12 @@ Default output is a 256×256 PNG on stdout.
   - `monsterid` — colorful pixel monsters
   - `retro` — 8-bit NES-era pixel faces
   - `robo` — cute little robots
+  - `1` / `set1` — Robohash classic robots
+  - `2` / `set2` — Robohash monsters
+  - `3` / `set3` — Robohash robot heads
+  - `4` / `set4` — Robohash cats
+  - `5` / `set5` — Robohash human avatars
+  - `6` / `set6` — Robohash cosmic apes
 - `-F`, `--format FMT` — `png`, `jpg`, `gif`, `bmp`, …
 - `-S`, `--size PIXELS` — output size (default 256)
 - `-b`, `--backcolor COLOR` — `red`, `#f00`, `#ff0000`, or `rgb()` / `hsl()` / `rgba()` / `hsla()`
@@ -34,11 +40,13 @@ Default output is a 256×256 PNG on stdout.
 identicon alice@example.com >alice.png
 identicon -t retro -S 128 -o face.png -f bob
 identicon -s office -t robo -F jpg -o bot.jpg team-42
+identicon -t set4 -S 128 -o cat.png user@host
 ```
 
 ## Repository layout
 
-- `src/` - Python sources (`identicon.py`, `styles.py`, `commons.py`)
+- `src/` - Python sources (`identicon.py`, `styles.py`, `runtime.py`)
+- `third_party/robohash/` - vendored Robohash assembler and sprite sets
 - `tests/` - Python unit tests (`unittest`)
 - `debian/` - Debian packaging metadata
 - `po/` - gettext message catalogs

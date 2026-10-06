@@ -1,0 +1,4 @@
+Upstream: https://github.com/e1ven/Robohash
+Commit: 52cb1525d83306652b79ac440e94cdd45e22a43a
+Python assembler: MIT (LICENSE.txt)
+Artwork licenses: see debian/copyright and the upstream README.

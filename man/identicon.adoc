@@ -51,6 +51,22 @@ otherwise.
     8-bit NES-era pixel faces.
   *robo*;;
     Cute little robots.
+  *1*, *set1*;;
+    Robohash classic robots.
+  *2*, *set2*;;
+    Robohash monsters.
+  *3*, *set3*;;
+    Robohash robot heads.
+  *4*, *set4*;;
+    Robohash cats.
+  *5*, *set5*;;
+    Robohash human avatars.
+  *6*, *set6*;;
+    Robohash cosmic apes.
+
+  Numeric forms *1*–*6* are aliases of *set1*–*set6*.
+  These styles use the vendored Robohash sprite assembler
+  (https://github.com/e1ven/Robohash).
 
 *-F, --format* _FMT_::
   Image format such as *png*, *jpg*, *gif*, or *bmp*.
@@ -101,6 +117,9 @@ Write a 128-pixel retro face, overwriting if needed::
 
 Salted robot JPEG::
   identicon -s office -t robo -F jpg -o bot.jpg team-42
+
+Robohash cat from set 4::
+  identicon -t set4 -S 128 -o cat.png user@host
 
 == Author
 

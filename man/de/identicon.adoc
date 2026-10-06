@@ -48,6 +48,22 @@ Die Ausgabe ist PNG auf der Standardausgabe, außer *--out* oder *--format* sage
     8-Bit-Pixelgesichter im NES-Stil.
   *robo*;;
     Niedliche kleine Roboter.
+  *1*, *set1*;;
+    Robohash-Klassikroboter.
+  *2*, *set2*;;
+    Robohash-Monster.
+  *3*, *set3*;;
+    Robohash-Roboterköpfe.
+  *4*, *set4*;;
+    Robohash-Katzen.
+  *5*, *set5*;;
+    Robohash-Menschliche Avatare.
+  *6*, *set6*;;
+    Robohash-Kosmosaffen.
+
+  Die Zahlen *1*–*6* sind Aliase von *set1*–*set6*.
+  Diese Stile nutzen den mitgelieferten Robohash-Zusammensetzer
+  (https://github.com/e1ven/Robohash).
 
 *-F, --format* _FMT_::
   Bildformat wie *png*, *jpg*, *gif* oder *bmp*.
@@ -96,6 +112,9 @@ Standard-Identicon als PNG auf Standardausgabe::
 
 Gesalzener Roboter als JPEG::
   identicon -s office -t robo -F jpg -o bot.jpg team-42
+
+Robohash-Katze aus Satz 4::
+  identicon -t set4 -S 128 -o cat.png user@host
 
 == Autor
 

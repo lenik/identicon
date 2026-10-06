@@ -48,6 +48,22 @@ identicon - توليد صورة أفاتار حتمية من معرّف
     وجوه بكسل ثمانية البت من عصر NES.
   *robo*;;
     روبوتات صغيرة لطيفة.
+  *1*، *set1*;;
+    روبوتات Robohash الكلاسيكية.
+  *2*، *set2*;;
+    وحوش Robohash.
+  *3*، *set3*;;
+    رؤوس روبوت Robohash.
+  *4*، *set4*;;
+    قطط Robohash.
+  *5*، *set5*;;
+    أفاتارات بشرية من Robohash.
+  *6*، *set6*;;
+    قرود فضائية من Robohash.
+
+  الصيغ الرقمية *1*–*6* بدائل لـ *set1*–*set6*.
+  هذه الأنماط تستخدم مُجمِّع Robohash المضمَّن
+  (https://github.com/e1ven/Robohash).
 
 *-F, --format* _FMT_::
   صيغة الصورة مثل *png* أو *jpg* أو *gif* أو *bmp*.
@@ -96,6 +112,9 @@ identicon - توليد صورة أفاتار حتمية من معرّف
 
 روبوت JPEG بملح::
   identicon -s office -t robo -F jpg -o bot.jpg team-42
+
+قطة Robohash من المجموعة 4::
+  identicon -t set4 -S 128 -o cat.png user@host
 
 == المؤلف
 

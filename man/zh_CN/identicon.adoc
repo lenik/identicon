@@ -48,6 +48,22 @@ _ID_ 与 *--salt* 在哈希前按 UTF-8 编码。
     红白机时代的 8-bit 像素人脸。
   *robo*;;
     超萌小机器人。
+  *1*、*set1*;;
+    Robohash 经典机器人。
+  *2*、*set2*;;
+    Robohash 怪物。
+  *3*、*set3*;;
+    Robohash 机器人头像。
+  *4*、*set4*;;
+    Robohash 猫。
+  *5*、*set5*;;
+    Robohash 人类头像。
+  *6*、*set6*;;
+    Robohash 宇宙猿。
+
+  数字形式 *1*–*6* 是 *set1*–*set6* 的别名。
+  这些风格使用内嵌的 Robohash 拼装器
+  (https://github.com/e1ven/Robohash)。
 
 *-F, --format* _FMT_::
   图像格式，如 *png*、*jpg*、*gif*、*bmp*。
@@ -95,6 +111,9 @@ _ID_ 与 *--salt* 在哈希前按 UTF-8 编码。
 
 带盐的机器人 JPEG::
   identicon -s office -t robo -F jpg -o bot.jpg team-42
+
+Robohash 第 4 套猫咪::
+  identicon -t set4 -S 128 -o cat.png user@host
 
 == 作者
 

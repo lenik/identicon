@@ -10,7 +10,8 @@ from PIL import Image
 
 from runtime import digest_for, parse_color, save_image
 from identicon import main
-from styles import TYPES, render
+from robohash_style import MissingRobohashError, robohash_resource_dir
+from styles import BUILTIN_TYPES, normalize_type, render
 
 
 class ColorTests(unittest.TestCase):
@@ -32,7 +33,7 @@ class RenderTests(unittest.TestCase):
     def test_all_types_size_and_determinism(self) -> None:
         d = digest_for("alice@example.com", "pepper")
         d2 = digest_for("alice@example.com", "other")
-        for kind in TYPES:
+        for kind in BUILTIN_TYPES:
             a = render(kind, d, 64, None)
             b = render(kind, d, 64, None)
             c = render(kind, d2, 64, None)
@@ -68,6 +69,45 @@ class RenderTests(unittest.TestCase):
             img = render("robo", digest_for(f"bot-{i}", None), 64, None)
             seen.add(img.tobytes())
         self.assertEqual(len(seen), 8)
+
+
+def _robohash_available() -> bool:
+    try:
+        robohash_resource_dir()
+        return True
+    except MissingRobohashError:
+        return False
+
+
+class RobohashTests(unittest.TestCase):
+    def test_numeric_aliases(self) -> None:
+        for i in range(1, 7):
+            self.assertEqual(normalize_type(str(i)), f"set{i}")
+            self.assertEqual(normalize_type(f"set{i}"), f"set{i}")
+
+    @unittest.skipUnless(_robohash_available(), "Robohash sprite sets not vendored")
+    def test_set1_and_alias_match(self) -> None:
+        d = digest_for("robohash-user", "salt")
+        a = render("set1", d, 32, None)
+        b = render("1", d, 32, None)
+        self.assertEqual(a.size, (32, 32))
+        self.assertEqual(a.tobytes(), b.tobytes())
+
+    @unittest.skipUnless(_robohash_available(), "Robohash sprite sets not vendored")
+    def test_sets_determinism_and_salt(self) -> None:
+        d = digest_for("alice@example.com", "pepper")
+        d2 = digest_for("alice@example.com", "other")
+        for kind in ("set1", "set6"):
+            a = render(kind, d, 32, None)
+            b = render(kind, d, 32, None)
+            c = render(kind, d2, 32, None)
+            self.assertEqual(a.tobytes(), b.tobytes(), kind)
+            self.assertNotEqual(a.tobytes(), c.tobytes(), kind)
+
+    @unittest.skipUnless(_robohash_available(), "Robohash sprite sets not vendored")
+    def test_backcolor_under_transparency(self) -> None:
+        img = render("set1", digest_for("bg-rh", None), 32, parse_color("#00ff00"))
+        self.assertEqual(img.getpixel((0, 0))[:3], (0, 255, 0))
 
 
 class CliTests(unittest.TestCase):

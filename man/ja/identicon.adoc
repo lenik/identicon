@@ -47,6 +47,22 @@ _ID_ と *--salt* はハッシュ前に UTF-8 で符号化します。
     ファミコン時代の 8 ビット画素の顔。
   *robo*;;
     かわいい小さなロボット。
+  *1*、*set1*;;
+    Robohash の古典的ロボット。
+  *2*、*set2*;;
+    Robohash の怪物。
+  *3*、*set3*;;
+    Robohash のロボット頭部。
+  *4*、*set4*;;
+    Robohash の猫。
+  *5*、*set5*;;
+    Robohash の人間アバター。
+  *6*、*set6*;;
+    Robohash の宇宙猿。
+
+  数字の *1*–*6* は *set1*–*set6* の別名です。
+  これらの様式は同梱の Robohash 組立器を使います
+  (https://github.com/e1ven/Robohash)。
 
 *-F, --format* _FMT_::
   *png*、*jpg*、*gif*、*bmp* などの画像形式。
@@ -93,6 +109,9 @@ _ID_ と *--salt* はハッシュ前に UTF-8 で符号化します。
 
 ソルト付きロボット JPEG::
   identicon -s office -t robo -F jpg -o bot.jpg team-42
+
+第 4 組の Robohash 猫::
+  identicon -t set4 -S 128 -o cat.png user@host
 
 == 著者
 

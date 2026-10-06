@@ -21,6 +21,12 @@ ID 与盐按 UTF-8 编码。未指定 `--salt` 时，摘要为标识符的 SHA-2
   - `monsterid` — 长相独特的彩色像素小怪物
   - `retro` — 红白机时代的 8-bit 复古像素人脸
   - `robo` — 超萌小机器人
+  - `1` / `set1` — Robohash 经典机器人
+  - `2` / `set2` — Robohash 怪物
+  - `3` / `set3` — Robohash 机器人头像
+  - `4` / `set4` — Robohash 猫
+  - `5` / `set5` — Robohash 人类头像
+  - `6` / `set6` — Robohash 宇宙猿
 - `-F`, `--format FMT` — `png`、`jpg`、`gif`、`bmp` 等
 - `-S`, `--size PIXELS` — 边长像素（默认 256）
 - `-b`, `--backcolor COLOR` — `red`、`#f00`、`#ff0000`，或 `rgb()` / `hsl()` / `rgba()` / `hsla()`
@@ -33,11 +39,13 @@ ID 与盐按 UTF-8 编码。未指定 `--salt` 时，摘要为标识符的 SHA-2
 identicon alice@example.com >alice.png
 identicon -t retro -S 128 -o face.png -f bob
 identicon -s office -t robo -F jpg -o bot.jpg team-42
+identicon -t set4 -S 128 -o cat.png user@host
 ```
 
 ## 仓库结构
 
-- `src/` - Python 源码（`identicon.py`、`styles.py`、`commons.py`）
+- `src/` - Python 源码（`identicon.py`、`styles.py`、`runtime.py`）
+- `third_party/robohash/` - 内嵌的 Robohash 拼装器与素材
 - `tests/` - Python 单元测试（`unittest`）
 - `debian/` - Debian 打包元数据
 - `po/` - gettext 翻译目录

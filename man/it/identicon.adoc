@@ -48,6 +48,22 @@ L’uscita è PNG sullo standard output salvo *--out* o *--format*.
     Volti pixel 8 bit dell’era NES.
   *robo*;;
     Piccoli robot carini.
+  *1*, *set1*;;
+    Robot classici Robohash.
+  *2*, *set2*;;
+    Mostri Robohash.
+  *3*, *set3*;;
+    Teste di robot Robohash.
+  *4*, *set4*;;
+    Gatti Robohash.
+  *5*, *set5*;;
+    Avatar umani Robohash.
+  *6*, *set6*;;
+    Scimmie cosmiche Robohash.
+
+  Le forme numeriche *1*–*6* sono alias di *set1*–*set6*.
+  Questi stili usano l’assemblatore Robohash incluso
+  (https://github.com/e1ven/Robohash).
 
 *-F, --format* _FMT_::
   Formato immagine come *png*, *jpg*, *gif* o *bmp*.
@@ -96,6 +112,9 @@ Volto retro a 128 pixel, sovrascrittura se serve::
 
 Robot JPEG con sale::
   identicon -s office -t robo -F jpg -o bot.jpg team-42
+
+Gatto Robohash del set 4::
+  identicon -t set4 -S 128 -o cat.png user@host
 
 == Autore
 

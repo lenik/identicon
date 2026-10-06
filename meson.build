@@ -61,6 +61,7 @@ foreach mod : [
     'monster_style.py',
     'retro_style.py',
     'robo_style.py',
+    'robohash_style.py',
     'styles.py',
 ]
     custom_target(
@@ -73,6 +74,12 @@ foreach mod : [
         install_dir: bindir,
     )
 endforeach
+
+install_subdir(
+    'third_party' / 'robohash',
+    install_dir: datadir / 'identicon',
+    follow_symlinks: false,
+)
 
 install_data(
     'identicon.bash',
@@ -96,6 +103,7 @@ test(
     env: [
         'PYTHONPATH=' + (meson.project_source_root() / 'src'),
         'IDENTICON_LOCALEDIR=' + (meson.project_build_root() / 'po'),
+        'IDENTICON_ROBOHASH_DIR=' + (meson.project_source_root() / 'third_party' / 'robohash'),
     ],
 )
 

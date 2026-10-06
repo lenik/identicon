@@ -9,7 +9,9 @@ prefix="${3:-/usr/local}"
 bindir="${4:-$prefix/bin}"
 datadir="${5:-$prefix/share}"
 mandir="${6:-$prefix/share/man}"
-for p in "$bindir/identicon" "$mandir/man1/identicon.1" "$datadir/bash-completion/completions/identicon"
+for p in "$bindir/identicon" "$mandir/man1/identicon.1" \
+    "$datadir/bash-completion/completions/identicon" \
+    "$datadir/identicon/robohash"
 do
     if [ -L "$p" ]; then
         sudo rm -f "$p"

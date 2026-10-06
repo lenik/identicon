@@ -47,6 +47,22 @@ _ID_ 와 *--salt* 는 해시 전에 UTF-8 로 인코딩됩니다.
     패미컴 시대의 8비트 픽셀 얼굴.
   *robo*;;
     귀여운 작은 로봇.
+  *1*, *set1*;;
+    Robohash 고전 로봇.
+  *2*, *set2*;;
+    Robohash 괴물.
+  *3*, *set3*;;
+    Robohash 로봇 머리.
+  *4*, *set4*;;
+    Robohash 고양이.
+  *5*, *set5*;;
+    Robohash 인간 아바타.
+  *6*, *set6*;;
+    Robohash 우주 유인원.
+
+  숫자 *1*–*6* 은 *set1*–*set6* 의 별칭입니다.
+  이 스타일은 함께 넣는 Robohash 조립기를 씁니다
+  (https://github.com/e1ven/Robohash).
 
 *-F, --format* _FMT_::
   *png*, *jpg*, *gif*, *bmp* 같은 이미지 형식.
@@ -93,6 +109,9 @@ _ID_ 와 *--salt* 는 해시 전에 UTF-8 로 인코딩됩니다.
 
 솔트 로봇 JPEG::
   identicon -s office -t robo -F jpg -o bot.jpg team-42
+
+4번 세트의 Robohash 고양이::
+  identicon -t set4 -S 128 -o cat.png user@host
 
 == 저자
 

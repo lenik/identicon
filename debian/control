@@ -16,5 +16,5 @@ Depends:
 Description: generate deterministic avatar images from an identifier
  identicon renders a square avatar from an ID string. Supported styles
  include kaleidoscopic identicons, cartoon wavatars, pixel monsters,
- 8-bit retro faces, and small robots. Output may be PNG, JPEG, GIF, or
- BMP, to a file or standard output.
+ 8-bit retro faces, small robots, and Robohash sets 1 through 6.
+ Output may be PNG, JPEG, GIF, or BMP, to a file or standard output.

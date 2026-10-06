@@ -14,7 +14,7 @@ _identicon()
 		return
 		;;
 	-t | --type)
-		COMPREPLY=($(compgen -W 'identicon wavatar monsterid retro robo' -- "$cur"))
+		COMPREPLY=($(compgen -W 'identicon wavatar monsterid retro robo set1 set2 set3 set4 set5 set6 1 2 3 4 5 6' -- "$cur"))
 		return
 		;;
 	-F | --format)
