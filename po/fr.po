@@ -2,81 +2,139 @@ msgid ""
 msgstr ""
 "Project-Id-Version: identicon\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-24 22:31+0800\n"
+"POT-Creation-Date: 2026-10-06 17:15+0800\n"
 "Language: fr\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/identicon.c:32
+#: src/identicon.py:30
 msgid ""
-"Usage: identicon [OPTION]... [FILE]...\n"
-"Concatenate FILE(s) to standard output. With no FILE, or when FILE is -,\n"
-"read standard input.\n"
-msgstr ""
-"Utilisation : identicon [OPTION]... [FILE]...\n"
-"Concatene les FILE(s) vers la sortie standard. Sans FILE, ou si FILE vaut "
-"-,\n"
-"lit l'entree standard.\n"
+"Usage: identicon [OPTION]... ID\n"
+"Generate a deterministic avatar image from ID.\n"
+msgstr "Utilisation : identicon [OPTION]... ID\nGénérer une image d’avatar déterministe à partir de ID.\n"
 
-#: src/identicon.c:38
+#: src/identicon.py:35
+msgid "mix SALT into the hash (UTF-8)\n"
+msgstr "mélanger SALT dans le hachage (UTF-8)\n"
+
+#: src/identicon.py:37
+msgid "write the image to FILE; format follows the extension (default: stdout)\n"
+msgstr "écrire l’image dans FILE ; le format suit l’extension (défaut : stdout)\n"
+
+#: src/identicon.py:39
+msgid "avatar style (default: identicon)\n"
+msgstr "style d’avatar (défaut : identicon)\n"
+
+#: src/identicon.py:41
+msgid "kaleidoscopic pixel pattern\n"
+msgstr "motif de pixels kaléidoscopique\n"
+
+#: src/identicon.py:43
+msgid "cartoon faces with varying expressions and background colors\n"
+msgstr "visages cartoon aux expressions et fonds de couleurs variés\n"
+
+#: src/identicon.py:45
+msgid "colorful pixel monsters with distinctive looks\n"
+msgstr "monstres en pixels colorés au look distinctif\n"
+
+#: src/identicon.py:47
+msgid "8-bit NES-era pixel faces\n"
+msgstr "visages pixel 8 bits de l’ère NES\n"
+
+#: src/identicon.py:49
+msgid "cute little robots\n"
+msgstr "petits robots mignons\n"
+
+#: src/identicon.py:51
+msgid "image format: jpg, gif, png, bmp, ... (default: png)\n"
+msgstr "format d’image : jpg, gif, png, bmp, ... (défaut : png)\n"
+
+#: src/identicon.py:53
+msgid "size in pixels (default: 256)\n"
+msgstr "taille en pixels (défaut : 256)\n"
+
+#: src/identicon.py:55
+msgid "background color: name, #rgb, #rrggbb, or rgb/hsl[a](...)\n"
+msgstr "couleur de fond : nom, #rgb, #rrggbb, ou rgb/hsl[a](...)\n"
+
+#: src/identicon.py:57
+msgid "overwrite FILE if it already exists\n"
+msgstr "écraser FILE s’il existe déjà\n"
+
+#: src/identicon.py:59
 msgid "repeat for more verbose loggings\n"
-msgstr "repeter pour obtenir des journaux plus verbeux\n"
+msgstr "répéter pour des journaux plus détaillés\n"
 
-#: src/identicon.c:40
+#: src/identicon.py:61
 msgid "show less logging messages\n"
 msgstr "afficher moins de messages de journal\n"
 
-#: src/identicon.c:42
+#: src/identicon.py:63
 msgid "display this help and exit\n"
 msgstr "afficher cette aide et quitter\n"
 
-#: src/identicon.c:44
+#: src/identicon.py:65
 msgid "output version information and exit\n"
 msgstr "afficher les informations de version et quitter\n"
 
-#: src/identicon.c:46
-#, fuzzy, c-format
-msgid "Report bugs to: <%s>\n"
-msgstr "Signaler les bugs a : <%s>\n"
+#: src/identicon.py:67
+msgid "ID and SALT are UTF-8 encoded.\n"
+msgstr "ID et SALT sont encodés en UTF-8.\n"
 
-#: src/identicon.c:54
-#, c-format
-msgid "hello, world!\n"
-msgstr ""
+#: src/identicon.py:68
+msgid "Report bugs to: <{email}>\n"
+msgstr "Signaler les bogues à : <{email}>\n"
 
-#: src/identicon.c:81
-#, fuzzy, c-format
-msgid "Copyright (C) %d %s\n"
-msgstr "Copyright (C) %d %s\n"
+#: src/identicon.py:73
+msgid "Copyright (C) {year} {author}\n"
+msgstr "Droits d’auteur (C) {year} {author}\n"
 
-#: src/identicon.c:82
-msgid ""
-"License AGPL-3.0-or-later: <https://www.gnu.org/licenses/agpl-3.0.html>\n"
-msgstr ""
-"Licence AGPL-3.0-or-later : <https://www.gnu.org/licenses/agpl-3.0.html>\n"
+#: src/identicon.py:74
+msgid "License AGPL-3.0-or-later: <https://www.gnu.org/licenses/agpl-3.0.html>\n"
+msgstr "Licence AGPL-3.0-or-later : <https://www.gnu.org/licenses/agpl-3.0.html>\n"
 
-#: src/identicon.c:84
+#: src/identicon.py:75
 msgid "This is free software: you are free to change and redistribute it.\n"
-msgstr "Ce logiciel est libre : vous pouvez le modifier et le redistribuer.\n"
+msgstr "Ceci est un logiciel libre : vous pouvez le modifier et le redistribuer.\n"
 
-#: src/identicon.c:86
+#: src/identicon.py:76
 msgid "This project opposes AI exploitation and AI hegemony.\n"
-msgstr ""
-"Ce projet s'oppose a l'exploitation par l'IA et a l'hegemonie de l'IA.\n"
+msgstr "Ce projet s’oppose à l’exploitation et à l’hégémonie de l’IA.\n"
 
-#: src/identicon.c:87
-msgid ""
-"This project rejects mindless MIT-style licensing and politically naive BSD-"
-"style licensing.\n"
-msgstr ""
-"Ce projet rejette les licences de type MIT sans reflexion et les licences de "
-"type BSD politiquement naives.\n"
+#: src/identicon.py:79
+msgid "This project rejects mindless MIT-style licensing and politically naive BSD-style licensing.\n"
+msgstr "Ce projet refuse les licences façon MIT irréfléchies et façon BSD politiquement naïves.\n"
 
-#: src/identicon.c:90
+#: src/identicon.py:83
 msgid "There is NO WARRANTY, to the extent permitted by law.\n"
-msgstr "AUCUNE GARANTIE n'est fournie, dans les limites permises par la loi.\n"
+msgstr "Il n’y a AUCUNE GARANTIE, dans la mesure permise par la loi.\n"
 
-#: src/lib.c:49
-#, c-format
-msgid "%s: write error\n"
-msgstr ""
+#: src/identicon.py:148 src/identicon.py:172
+msgid "invalid size {value!r}"
+msgstr "taille non valable {value!r}"
+
+#: src/identicon.py:155
+msgid "missing ID"
+msgstr "ID manquant"
+
+#: src/identicon.py:157
+#, python-brace-format
+msgid "extra argument: {arg}"
+msgstr "argument supplémentaire : {arg}"
+
+#: src/identicon.py:165
+msgid "unknown type {value!r} (expected {types})"
+msgstr "type inconnu {value!r} (attendu {types})"
+
+#: src/identicon.py:181
+msgid "invalid color {value!r}: {err}"
+msgstr "couleur non valable {value!r} : {err}"
+
+#: src/identicon.py:189
+msgid "unknown format {value!r}"
+msgstr "format inconnu {value!r}"
+
+#: src/identicon.py:199
+#, python-brace-format
+msgid "{path} exists (use --force to overwrite)"
+msgstr "{path} existe (utilisez --force pour écraser)"

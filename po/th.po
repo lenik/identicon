@@ -2,78 +2,139 @@ msgid ""
 msgstr ""
 "Project-Id-Version: identicon\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-24 22:31+0800\n"
+"POT-Creation-Date: 2026-10-06 17:15+0800\n"
 "Language: th\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/identicon.c:32
+#: src/identicon.py:30
 msgid ""
-"Usage: identicon [OPTION]... [FILE]...\n"
-"Concatenate FILE(s) to standard output. With no FILE, or when FILE is -,\n"
-"read standard input.\n"
-msgstr ""
-"การใช้งาน: identicon [OPTION]... [FILE]...\n"
-"ต่อเนื้อหาของ FILE ไปยังเอาต์พุตมาตรฐาน หากไม่มี FILE หรือ FILE เป็น -,\n"
-"จะอ่านจากอินพุตมาตรฐาน\n"
+"Usage: identicon [OPTION]... ID\n"
+"Generate a deterministic avatar image from ID.\n"
+msgstr "วิธีใช้: identicon [ตัวเลือก]... ID\nสร้างภาพอวตารที่กำหนดได้จาก ID\n"
 
-#: src/identicon.c:38
+#: src/identicon.py:35
+msgid "mix SALT into the hash (UTF-8)\n"
+msgstr "ผสม SALT ลงในแฮช (UTF-8)\n"
+
+#: src/identicon.py:37
+msgid "write the image to FILE; format follows the extension (default: stdout)\n"
+msgstr "เขียนภาพลง FILE; รูปแบบตามนามสกุล (ค่าเริ่มต้น: stdout)\n"
+
+#: src/identicon.py:39
+msgid "avatar style (default: identicon)\n"
+msgstr "สไตล์อวตาร (ค่าเริ่มต้น: identicon)\n"
+
+#: src/identicon.py:41
+msgid "kaleidoscopic pixel pattern\n"
+msgstr "ลวดลายพิกเซลแบบกล้องสลับลาย\n"
+
+#: src/identicon.py:43
+msgid "cartoon faces with varying expressions and background colors\n"
+msgstr "ใบหน้าการ์ตูนที่สีพื้นและสีหน้าต่างกัน\n"
+
+#: src/identicon.py:45
+msgid "colorful pixel monsters with distinctive looks\n"
+msgstr "สัตว์ประหลาดพิกเซลสีสันและรูปลักษณ์เฉพาะ\n"
+
+#: src/identicon.py:47
+msgid "8-bit NES-era pixel faces\n"
+msgstr "ใบหน้าพิกเซล 8 บิตยุค NES\n"
+
+#: src/identicon.py:49
+msgid "cute little robots\n"
+msgstr "หุ่นยนต์น้อยน่ารัก\n"
+
+#: src/identicon.py:51
+msgid "image format: jpg, gif, png, bmp, ... (default: png)\n"
+msgstr "รูปแบบภาพ: jpg, gif, png, bmp, ... (ค่าเริ่มต้น: png)\n"
+
+#: src/identicon.py:53
+msgid "size in pixels (default: 256)\n"
+msgstr "ขนาดเป็นพิกเซล (ค่าเริ่มต้น: 256)\n"
+
+#: src/identicon.py:55
+msgid "background color: name, #rgb, #rrggbb, or rgb/hsl[a](...)\n"
+msgstr "สีพื้นหลัง: ชื่อ, #rgb, #rrggbb หรือ rgb/hsl[a](...)\n"
+
+#: src/identicon.py:57
+msgid "overwrite FILE if it already exists\n"
+msgstr "เขียนทับ FILE หากมีอยู่แล้ว\n"
+
+#: src/identicon.py:59
 msgid "repeat for more verbose loggings\n"
-msgstr "ใส่ซ้ำเพื่อแสดงบันทึกแบบละเอียดมากขึ้น\n"
+msgstr "ระบุซ้ำเพื่อบันทึกที่ละเอียดขึ้น\n"
 
-#: src/identicon.c:40
+#: src/identicon.py:61
 msgid "show less logging messages\n"
-msgstr "แสดงข้อความบันทึกให้น้อยลง\n"
+msgstr "แสดงข้อความปูมน้อยลง\n"
 
-#: src/identicon.c:42
+#: src/identicon.py:63
 msgid "display this help and exit\n"
-msgstr "แสดงความช่วยเหลือนี้และออก\n"
+msgstr "แสดงวิธีใช้นี้แล้วออก\n"
 
-#: src/identicon.c:44
+#: src/identicon.py:65
 msgid "output version information and exit\n"
-msgstr "แสดงข้อมูลเวอร์ชันและออก\n"
+msgstr "แสดงข้อมูลรุ่นแล้วออก\n"
 
-#: src/identicon.c:46
-#, fuzzy, c-format
-msgid "Report bugs to: <%s>\n"
-msgstr "รายงานบั๊กไปที่: <%s>\n"
+#: src/identicon.py:67
+msgid "ID and SALT are UTF-8 encoded.\n"
+msgstr "ID และ SALT เข้ารหัสเป็น UTF-8\n"
 
-#: src/identicon.c:54
-#, c-format
-msgid "hello, world!\n"
-msgstr ""
+#: src/identicon.py:68
+msgid "Report bugs to: <{email}>\n"
+msgstr "รายงานข้อบกพร่องไปที่: <{email}>\n"
 
-#: src/identicon.c:81
-#, fuzzy, c-format
-msgid "Copyright (C) %d %s\n"
-msgstr "ลิขสิทธิ์ (C) %d %s\n"
+#: src/identicon.py:73
+msgid "Copyright (C) {year} {author}\n"
+msgstr "ลิขสิทธิ์ (C) {year} {author}\n"
 
-#: src/identicon.c:82
-msgid ""
-"License AGPL-3.0-or-later: <https://www.gnu.org/licenses/agpl-3.0.html>\n"
-msgstr ""
-"สัญญาอนุญาต AGPL-3.0-or-later: <https://www.gnu.org/licenses/agpl-3.0.html>\n"
+#: src/identicon.py:74
+msgid "License AGPL-3.0-or-later: <https://www.gnu.org/licenses/agpl-3.0.html>\n"
+msgstr "สัญญาอนุญาต AGPL-3.0-or-later: <https://www.gnu.org/licenses/agpl-3.0.html>\n"
 
-#: src/identicon.c:84
+#: src/identicon.py:75
 msgid "This is free software: you are free to change and redistribute it.\n"
-msgstr "นี่คือซอฟต์แวร์เสรี คุณมีสิทธิ์แก้ไขและแจกจ่ายต่อได้\n"
+msgstr "นี่คือซอฟต์แวร์เสรี: คุณเปลี่ยนและแจกจ่ายต่อได้\n"
 
-#: src/identicon.c:86
+#: src/identicon.py:76
 msgid "This project opposes AI exploitation and AI hegemony.\n"
-msgstr "โครงการนี้คัดค้านการเอาเปรียบด้วย AI และอำนาจนำของ AI\n"
+msgstr "โครงการนี้คัดค้านการขูดรีดและอำนาจครอบงำของเอไอ\n"
 
-#: src/identicon.c:87
-msgid ""
-"This project rejects mindless MIT-style licensing and politically naive BSD-"
-"style licensing.\n"
-msgstr ""
-"โครงการนี้ปฏิเสธใบอนุญาตแบบ MIT ที่ไร้วิจารณญาณ และใบอนุญาตแบบ BSD ที่โง่เขลาทางการเมือง\n"
+#: src/identicon.py:79
+msgid "This project rejects mindless MIT-style licensing and politically naive BSD-style licensing.\n"
+msgstr "โครงการนี้ปฏิเสธสัญญาอนุญาตแบบ MIT ที่ไม่คิดและแบบ BSD ที่ไร้เดียงสาทางการเมือง\n"
 
-#: src/identicon.c:90
+#: src/identicon.py:83
 msgid "There is NO WARRANTY, to the extent permitted by law.\n"
-msgstr "ไม่มีการรับประกันใด ๆ ตามขอบเขตที่กฎหมายอนุญาต\n"
+msgstr "ไม่มีหลักประกันใด ๆ เท่าที่กฎหมายอนุญาต\n"
 
-#: src/lib.c:49
-#, c-format
-msgid "%s: write error\n"
-msgstr ""
+#: src/identicon.py:148 src/identicon.py:172
+msgid "invalid size {value!r}"
+msgstr "ขนาดไม่ถูกต้อง {value!r}"
+
+#: src/identicon.py:155
+msgid "missing ID"
+msgstr "ไม่มี ID"
+
+#: src/identicon.py:157
+#, python-brace-format
+msgid "extra argument: {arg}"
+msgstr "อาร์กิวเมนต์เกิน: {arg}"
+
+#: src/identicon.py:165
+msgid "unknown type {value!r} (expected {types})"
+msgstr "ชนิดที่ไม่รู้จัก {value!r} (คาดไว้ {types})"
+
+#: src/identicon.py:181
+msgid "invalid color {value!r}: {err}"
+msgstr "สีไม่ถูกต้อง {value!r}: {err}"
+
+#: src/identicon.py:189
+msgid "unknown format {value!r}"
+msgstr "รูปแบบที่ไม่รู้จัก {value!r}"
+
+#: src/identicon.py:199
+#, python-brace-format
+msgid "{path} exists (use --force to overwrite)"
+msgstr "{path} มีอยู่แล้ว (ใช้ --force เพื่อเขียนทับ)"

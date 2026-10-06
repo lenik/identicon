@@ -7,79 +7,146 @@ msgid ""
 msgstr ""
 "Project-Id-Version: identicon 3b1f339-dirty\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-24 22:31+0800\n"
+"POT-Creation-Date: 2026-10-06 17:15+0800\n"
 "PO-Revision-Date: 2026-04-24 22:31+0800\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=ASCII\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
-"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: src/identicon.c:32
+#: src/identicon.py:30
 msgid ""
-"Usage: identicon [OPTION]... [FILE]...\n"
-"Concatenate FILE(s) to standard output. With no FILE, or when FILE is -,\n"
-"read standard input.\n"
-msgstr ""
+"Usage: identicon [OPTION]... ID\n"
+"Generate a deterministic avatar image from ID.\n"
+msgstr "Использование: identicon [ПАРАМЕТР]... ID\nСоздать детерминированное изображение аватара из ID.\n"
 
-#: src/identicon.c:38
+#: src/identicon.py:35
+msgid "mix SALT into the hash (UTF-8)\n"
+msgstr "подмешать SALT в хеш (UTF-8)\n"
+
+#: src/identicon.py:37
+msgid "write the image to FILE; format follows the extension (default: stdout)\n"
+msgstr "записать изображение в FILE; формат берётся из расширения (по умолчанию: stdout)\n"
+
+#: src/identicon.py:39
+msgid "avatar style (default: identicon)\n"
+msgstr "стиль аватара (по умолчанию: identicon)\n"
+
+#: src/identicon.py:41
+msgid "kaleidoscopic pixel pattern\n"
+msgstr "калейдоскопический пиксельный узор\n"
+
+#: src/identicon.py:43
+msgid "cartoon faces with varying expressions and background colors\n"
+msgstr "мультяшные лица с разными выражениями и цветом фона\n"
+
+#: src/identicon.py:45
+msgid "colorful pixel monsters with distinctive looks\n"
+msgstr "яркие пиксельные монстры с характерной внешностью\n"
+
+#: src/identicon.py:47
+msgid "8-bit NES-era pixel faces\n"
+msgstr "8-битные пиксельные лица в духе NES\n"
+
+#: src/identicon.py:49
+msgid "cute little robots\n"
+msgstr "милые маленькие роботы\n"
+
+#: src/identicon.py:51
+msgid "image format: jpg, gif, png, bmp, ... (default: png)\n"
+msgstr "формат изображения: jpg, gif, png, bmp, ... (по умолчанию: png)\n"
+
+#: src/identicon.py:53
+msgid "size in pixels (default: 256)\n"
+msgstr "размер в пикселях (по умолчанию: 256)\n"
+
+#: src/identicon.py:55
+msgid "background color: name, #rgb, #rrggbb, or rgb/hsl[a](...)\n"
+msgstr "цвет фона: имя, #rgb, #rrggbb или rgb/hsl[a](...)\n"
+
+#: src/identicon.py:57
+msgid "overwrite FILE if it already exists\n"
+msgstr "перезаписать FILE, если он уже есть\n"
+
+#: src/identicon.py:59
 msgid "repeat for more verbose loggings\n"
-msgstr ""
+msgstr "повторить для более подробных сообщений\n"
 
-#: src/identicon.c:40
+#: src/identicon.py:61
 msgid "show less logging messages\n"
-msgstr ""
+msgstr "показывать меньше сообщений журнала\n"
 
-#: src/identicon.c:42
+#: src/identicon.py:63
 msgid "display this help and exit\n"
-msgstr ""
+msgstr "показать эту справку и выйти\n"
 
-#: src/identicon.c:44
+#: src/identicon.py:65
 msgid "output version information and exit\n"
-msgstr ""
+msgstr "показать сведения о версии и выйти\n"
 
-#: src/identicon.c:46
-#, c-format
-msgid "Report bugs to: <%s>\n"
-msgstr ""
+#: src/identicon.py:67
+msgid "ID and SALT are UTF-8 encoded.\n"
+msgstr "ID и SALT кодируются в UTF-8.\n"
 
-#: src/identicon.c:54
-#, c-format
-msgid "hello, world!\n"
-msgstr ""
+#: src/identicon.py:68
+#, python-brace-format
+msgid "Report bugs to: <{email}>\n"
+msgstr "Сообщения об ошибках: <{email}>\n"
 
-#: src/identicon.c:81
-#, c-format
-msgid "Copyright (C) %d %s\n"
-msgstr ""
+#: src/identicon.py:73
+#, python-brace-format
+msgid "Copyright (C) {year} {author}\n"
+msgstr "Авторские права (C) {year} {author}\n"
 
-#: src/identicon.c:82
-msgid ""
-"License AGPL-3.0-or-later: <https://www.gnu.org/licenses/agpl-3.0.html>\n"
-msgstr ""
+#: src/identicon.py:74
+msgid "License AGPL-3.0-or-later: <https://www.gnu.org/licenses/agpl-3.0.html>\n"
+msgstr "Лицензия AGPL-3.0-or-later: <https://www.gnu.org/licenses/agpl-3.0.html>\n"
 
-#: src/identicon.c:84
+#: src/identicon.py:75
 msgid "This is free software: you are free to change and redistribute it.\n"
-msgstr ""
+msgstr "Это свободное ПО: его можно изменять и распространять.\n"
 
-#: src/identicon.c:86
+#: src/identicon.py:76
 msgid "This project opposes AI exploitation and AI hegemony.\n"
-msgstr ""
+msgstr "Этот проект против эксплуатации ИИ и гегемонии ИИ.\n"
 
-#: src/identicon.c:87
-msgid ""
-"This project rejects mindless MIT-style licensing and politically naive BSD-"
-"style licensing.\n"
-msgstr ""
+#: src/identicon.py:79
+msgid "This project rejects mindless MIT-style licensing and politically naive BSD-style licensing.\n"
+msgstr "Этот проект отвергает бездумные лицензии в духе MIT и политически наивные в духе BSD.\n"
 
-#: src/identicon.c:90
+#: src/identicon.py:83
 msgid "There is NO WARRANTY, to the extent permitted by law.\n"
-msgstr ""
+msgstr "НИКАКИХ ГАРАНТИЙ, в пределах, допускаемых законом.\n"
 
-#: src/lib.c:49
-#, c-format
-msgid "%s: write error\n"
-msgstr ""
+#: src/identicon.py:148 src/identicon.py:172
+msgid "invalid size {value!r}"
+msgstr "недопустимый размер {value!r}"
+
+#: src/identicon.py:155
+msgid "missing ID"
+msgstr "не указан ID"
+
+#: src/identicon.py:157
+#, python-brace-format
+msgid "extra argument: {arg}"
+msgstr "лишний аргумент: {arg}"
+
+#: src/identicon.py:165
+msgid "unknown type {value!r} (expected {types})"
+msgstr "неизвестный тип {value!r} (ожидается {types})"
+
+#: src/identicon.py:181
+msgid "invalid color {value!r}: {err}"
+msgstr "недопустимый цвет {value!r}: {err}"
+
+#: src/identicon.py:189
+msgid "unknown format {value!r}"
+msgstr "неизвестный формат {value!r}"
+
+#: src/identicon.py:199
+#, python-brace-format
+msgid "{path} exists (use --force to overwrite)"
+msgstr "{path} уже существует (для перезаписи укажите --force)"

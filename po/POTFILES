@@ -1,2 +1,3 @@
 src/identicon.py
-src/common_lib.py
+src/commons.py
+src/styles.py

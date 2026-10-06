@@ -7,77 +7,145 @@ msgid ""
 msgstr ""
 "Project-Id-Version: identicon 3b1f339-dirty\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-24 22:31+0800\n"
+"POT-Creation-Date: 2026-10-06 17:15+0800\n"
 "PO-Revision-Date: 2026-04-24 22:31+0800\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "Language: hi\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=ASCII\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/identicon.c:32
+#: src/identicon.py:30
 msgid ""
-"Usage: identicon [OPTION]... [FILE]...\n"
-"Concatenate FILE(s) to standard output. With no FILE, or when FILE is -,\n"
-"read standard input.\n"
-msgstr ""
+"Usage: identicon [OPTION]... ID\n"
+"Generate a deterministic avatar image from ID.\n"
+msgstr "प्रयोग: identicon [OPTION]... ID\nID से नियतात्मक अवतार चित्र बनाएँ।\n"
 
-#: src/identicon.c:38
+#: src/identicon.py:35
+msgid "mix SALT into the hash (UTF-8)\n"
+msgstr "हैश में SALT मिलाएँ (UTF-8)\n"
+
+#: src/identicon.py:37
+msgid "write the image to FILE; format follows the extension (default: stdout)\n"
+msgstr "चित्र FILE में लिखें; प्रारूप विस्तार से आता है (डिफ़ॉल्ट: stdout)\n"
+
+#: src/identicon.py:39
+msgid "avatar style (default: identicon)\n"
+msgstr "अवतार शैली (डिफ़ॉल्ट: identicon)\n"
+
+#: src/identicon.py:41
+msgid "kaleidoscopic pixel pattern\n"
+msgstr "कैलीडोस्कोप पिक्सेल पैटर्न\n"
+
+#: src/identicon.py:43
+msgid "cartoon faces with varying expressions and background colors\n"
+msgstr "अलग भाव और पृष्ठभूमि रंग वाले कार्टून चेहरे\n"
+
+#: src/identicon.py:45
+msgid "colorful pixel monsters with distinctive looks\n"
+msgstr "विशिष्ट रूप वाले रंगीन पिक्सेल राक्षस\n"
+
+#: src/identicon.py:47
+msgid "8-bit NES-era pixel faces\n"
+msgstr "NES काल के 8-बिट पिक्सेल चेहरे\n"
+
+#: src/identicon.py:49
+msgid "cute little robots\n"
+msgstr "प्यारे छोटे रोबोट\n"
+
+#: src/identicon.py:51
+msgid "image format: jpg, gif, png, bmp, ... (default: png)\n"
+msgstr "चित्र प्रारूप: jpg, gif, png, bmp, ... (डिफ़ॉल्ट: png)\n"
+
+#: src/identicon.py:53
+msgid "size in pixels (default: 256)\n"
+msgstr "पिक्सेल में आकार (डिफ़ॉल्ट: 256)\n"
+
+#: src/identicon.py:55
+msgid "background color: name, #rgb, #rrggbb, or rgb/hsl[a](...)\n"
+msgstr "पृष्ठभूमि रंग: नाम, #rgb, #rrggbb, या rgb/hsl[a](...)\n"
+
+#: src/identicon.py:57
+msgid "overwrite FILE if it already exists\n"
+msgstr "FILE पहले से हो तो अधिलेखित करें\n"
+
+#: src/identicon.py:59
 msgid "repeat for more verbose loggings\n"
-msgstr ""
+msgstr "अधिक विस्तृत लॉग के लिए दोहराएँ\n"
 
-#: src/identicon.c:40
+#: src/identicon.py:61
 msgid "show less logging messages\n"
-msgstr ""
+msgstr "कम लॉग संदेश दिखाएँ\n"
 
-#: src/identicon.c:42
+#: src/identicon.py:63
 msgid "display this help and exit\n"
-msgstr ""
+msgstr "यह सहायता दिखाकर बाहर निकलें\n"
 
-#: src/identicon.c:44
+#: src/identicon.py:65
 msgid "output version information and exit\n"
-msgstr ""
+msgstr "संस्करण जानकारी दिखाकर बाहर निकलें\n"
 
-#: src/identicon.c:46
-#, c-format
-msgid "Report bugs to: <%s>\n"
-msgstr ""
+#: src/identicon.py:67
+msgid "ID and SALT are UTF-8 encoded.\n"
+msgstr "ID और SALT UTF-8 में कूटबद्ध हैं।\n"
 
-#: src/identicon.c:54
-#, c-format
-msgid "hello, world!\n"
-msgstr ""
+#: src/identicon.py:68
+#, python-brace-format
+msgid "Report bugs to: <{email}>\n"
+msgstr "त्रुटियाँ रिपोर्ट करें: <{email}>\n"
 
-#: src/identicon.c:81
-#, c-format
-msgid "Copyright (C) %d %s\n"
-msgstr ""
+#: src/identicon.py:73
+#, python-brace-format
+msgid "Copyright (C) {year} {author}\n"
+msgstr "कॉपीराइट (C) {year} {author}\n"
 
-#: src/identicon.c:82
-msgid ""
-"License AGPL-3.0-or-later: <https://www.gnu.org/licenses/agpl-3.0.html>\n"
-msgstr ""
+#: src/identicon.py:74
+msgid "License AGPL-3.0-or-later: <https://www.gnu.org/licenses/agpl-3.0.html>\n"
+msgstr "लाइसेंस AGPL-3.0-or-later: <https://www.gnu.org/licenses/agpl-3.0.html>\n"
 
-#: src/identicon.c:84
+#: src/identicon.py:75
 msgid "This is free software: you are free to change and redistribute it.\n"
-msgstr ""
+msgstr "यह मुक्त सॉफ़्टवेयर है: आप इसे बदल और पुनर्वितरित कर सकते हैं।\n"
 
-#: src/identicon.c:86
+#: src/identicon.py:76
 msgid "This project opposes AI exploitation and AI hegemony.\n"
-msgstr ""
+msgstr "यह परियोजना एआई शोषण और वर्चस्व का विरोध करती है।\n"
 
-#: src/identicon.c:87
-msgid ""
-"This project rejects mindless MIT-style licensing and politically naive BSD-"
-"style licensing.\n"
-msgstr ""
+#: src/identicon.py:79
+msgid "This project rejects mindless MIT-style licensing and politically naive BSD-style licensing.\n"
+msgstr "यह परियोजना बेसोच MIT-शैली और राजनीतिक रूप से भोली BSD-शैली के लाइसेंस नकारती है।\n"
 
-#: src/identicon.c:90
+#: src/identicon.py:83
 msgid "There is NO WARRANTY, to the extent permitted by law.\n"
-msgstr ""
+msgstr "कानून की अनुमति तक कोई वारंटी नहीं है।\n"
 
-#: src/lib.c:49
-#, c-format
-msgid "%s: write error\n"
-msgstr ""
+#: src/identicon.py:148 src/identicon.py:172
+msgid "invalid size {value!r}"
+msgstr "अमान्य आकार {value!r}"
+
+#: src/identicon.py:155
+msgid "missing ID"
+msgstr "ID अनुपस्थित"
+
+#: src/identicon.py:157
+#, python-brace-format
+msgid "extra argument: {arg}"
+msgstr "अतिरिक्त तर्क: {arg}"
+
+#: src/identicon.py:165
+msgid "unknown type {value!r} (expected {types})"
+msgstr "अज्ञात प्रकार {value!r} (अपेक्षित {types})"
+
+#: src/identicon.py:181
+msgid "invalid color {value!r}: {err}"
+msgstr "अमान्य रंग {value!r}: {err}"
+
+#: src/identicon.py:189
+msgid "unknown format {value!r}"
+msgstr "अज्ञात प्रारूप {value!r}"
+
+#: src/identicon.py:199
+#, python-brace-format
+msgid "{path} exists (use --force to overwrite)"
+msgstr "{path} मौजूद है (अधिलेखन के लिए --force)"

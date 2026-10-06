@@ -2,80 +2,139 @@ msgid ""
 msgstr ""
 "Project-Id-Version: identicon\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-24 22:31+0800\n"
+"POT-Creation-Date: 2026-10-06 17:15+0800\n"
 "Language: ja\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/identicon.c:32
+#: src/identicon.py:30
 msgid ""
-"Usage: identicon [OPTION]... [FILE]...\n"
-"Concatenate FILE(s) to standard output. With no FILE, or when FILE is -,\n"
-"read standard input.\n"
-msgstr ""
-"使い方: identicon [OPTION]... [FILE]...\n"
-"FILE を連結して標準出力へ出力します。FILE がない場合、または FILE が - の場合"
-"は、\n"
-"標準入力を読み取ります。\n"
+"Usage: identicon [OPTION]... ID\n"
+"Generate a deterministic avatar image from ID.\n"
+msgstr "使い方: identicon [オプション]... ID\nID から決定的なアバター画像を生成します。\n"
 
-#: src/identicon.c:38
+#: src/identicon.py:35
+msgid "mix SALT into the hash (UTF-8)\n"
+msgstr "ソルト SALT をハッシュに混ぜる（UTF-8）\n"
+
+#: src/identicon.py:37
+msgid "write the image to FILE; format follows the extension (default: stdout)\n"
+msgstr "画像を FILE に書き出す。形式は拡張子に従う（既定: 標準出力）\n"
+
+#: src/identicon.py:39
+msgid "avatar style (default: identicon)\n"
+msgstr "アバターの様式（既定: identicon）\n"
+
+#: src/identicon.py:41
+msgid "kaleidoscopic pixel pattern\n"
+msgstr "万華鏡のようなピクセル模様\n"
+
+#: src/identicon.py:43
+msgid "cartoon faces with varying expressions and background colors\n"
+msgstr "表情と背景色がさまざまな漫画風の顔\n"
+
+#: src/identicon.py:45
+msgid "colorful pixel monsters with distinctive looks\n"
+msgstr "見た目の個性的な色つきピクセルの怪物\n"
+
+#: src/identicon.py:47
+msgid "8-bit NES-era pixel faces\n"
+msgstr "ファミコン時代の 8 ビット画素の顔\n"
+
+#: src/identicon.py:49
+msgid "cute little robots\n"
+msgstr "かわいい小さなロボット\n"
+
+#: src/identicon.py:51
+msgid "image format: jpg, gif, png, bmp, ... (default: png)\n"
+msgstr "画像形式: jpg、gif、png、bmp、…（既定: png）\n"
+
+#: src/identicon.py:53
+msgid "size in pixels (default: 256)\n"
+msgstr "ピクセル単位の大きさ（既定: 256）\n"
+
+#: src/identicon.py:55
+msgid "background color: name, #rgb, #rrggbb, or rgb/hsl[a](...)\n"
+msgstr "背景色: 名前、#rgb、#rrggbb、または rgb/hsl[a](...)\n"
+
+#: src/identicon.py:57
+msgid "overwrite FILE if it already exists\n"
+msgstr "FILE が既にある場合は上書きする\n"
+
+#: src/identicon.py:59
 msgid "repeat for more verbose loggings\n"
 msgstr "さらに詳細なログを出すには繰り返して指定\n"
 
-#: src/identicon.c:40
+#: src/identicon.py:61
 msgid "show less logging messages\n"
 msgstr "ログメッセージを少なく表示\n"
 
-#: src/identicon.c:42
+#: src/identicon.py:63
 msgid "display this help and exit\n"
 msgstr "このヘルプを表示して終了\n"
 
-#: src/identicon.c:44
+#: src/identicon.py:65
 msgid "output version information and exit\n"
 msgstr "バージョン情報を表示して終了\n"
 
-#: src/identicon.c:46
-#, fuzzy, c-format
-msgid "Report bugs to: <%s>\n"
-msgstr "不具合報告先: <%s>\n"
+#: src/identicon.py:67
+msgid "ID and SALT are UTF-8 encoded.\n"
+msgstr "ID と SALT は UTF-8 で符号化します。\n"
 
-#: src/identicon.c:54
-#, c-format
-msgid "hello, world!\n"
-msgstr ""
+#: src/identicon.py:68
+msgid "Report bugs to: <{email}>\n"
+msgstr "不具合の報告先: <{email}>\n"
 
-#: src/identicon.c:81
-#, fuzzy, c-format
-msgid "Copyright (C) %d %s\n"
-msgstr "Copyright (C) %d %s\n"
+#: src/identicon.py:73
+msgid "Copyright (C) {year} {author}\n"
+msgstr "著作権 (C) {year} {author}\n"
 
-#: src/identicon.c:82
-msgid ""
-"License AGPL-3.0-or-later: <https://www.gnu.org/licenses/agpl-3.0.html>\n"
-msgstr ""
-"ライセンス AGPL-3.0-or-later: <https://www.gnu.org/licenses/agpl-3.0.html>\n"
+#: src/identicon.py:74
+msgid "License AGPL-3.0-or-later: <https://www.gnu.org/licenses/agpl-3.0.html>\n"
+msgstr "ライセンス AGPL-3.0-or-later: <https://www.gnu.org/licenses/agpl-3.0.html>\n"
 
-#: src/identicon.c:84
+#: src/identicon.py:75
 msgid "This is free software: you are free to change and redistribute it.\n"
-msgstr "これはフリーソフトウェアです。自由に改変および再配布できます。\n"
+msgstr "これは自由ソフトウェアです。改変と再配布ができます。\n"
 
-#: src/identicon.c:86
+#: src/identicon.py:76
 msgid "This project opposes AI exploitation and AI hegemony.\n"
-msgstr "このプロジェクトは AI 搾取と AI 覇権に反対します。\n"
+msgstr "本プロジェクトは AI による搾取と覇権に反対します。\n"
 
-#: src/identicon.c:87
-msgid ""
-"This project rejects mindless MIT-style licensing and politically naive BSD-"
-"style licensing.\n"
-msgstr ""
-"このプロジェクトは無批判な MIT 型ライセンスと政治的に愚かな BSD 型ライセンス"
-"に反対します。\n"
+#: src/identicon.py:79
+msgid "This project rejects mindless MIT-style licensing and politically naive BSD-style licensing.\n"
+msgstr "本プロジェクトは無思慮な MIT 系許諾と政治的に無邪気な BSD 系許諾を拒みます。\n"
 
-#: src/identicon.c:90
+#: src/identicon.py:83
 msgid "There is NO WARRANTY, to the extent permitted by law.\n"
-msgstr "法の許す範囲で一切の保証はありません。\n"
+msgstr "法律の許す範囲で無保証です。\n"
 
-#: src/lib.c:49
-#, c-format
-msgid "%s: write error\n"
-msgstr ""
+#: src/identicon.py:148 src/identicon.py:172
+msgid "invalid size {value!r}"
+msgstr "不正なサイズ {value!r}"
+
+#: src/identicon.py:155
+msgid "missing ID"
+msgstr "ID がありません"
+
+#: src/identicon.py:157
+#, python-brace-format
+msgid "extra argument: {arg}"
+msgstr "余分な引数: {arg}"
+
+#: src/identicon.py:165
+msgid "unknown type {value!r} (expected {types})"
+msgstr "未知の種類 {value!r}（想定: {types}）"
+
+#: src/identicon.py:181
+msgid "invalid color {value!r}: {err}"
+msgstr "不正な色 {value!r}: {err}"
+
+#: src/identicon.py:189
+msgid "unknown format {value!r}"
+msgstr "未知の形式 {value!r}"
+
+#: src/identicon.py:199
+#, python-brace-format
+msgid "{path} exists (use --force to overwrite)"
+msgstr "{path} は既にあります（上書きするには --force）"
