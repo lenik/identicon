@@ -43,11 +43,59 @@ identicon -s office -t robo -F jpg -o bot.jpg team-42
 identicon -t set4 -S 128 -o cat.png user@host
 ```
 
+### Sample output
+
+Each grid is IDs `example-1` … `example-24` at 96×96.
+
+#### identicon
+
+![identicon](screenshots/identicon.png)
+
+#### wavatar
+
+![wavatar](screenshots/wavatar.png)
+
+#### monsterid
+
+![monsterid](screenshots/monsterid.png)
+
+#### retro
+
+![retro](screenshots/retro.png)
+
+#### robo
+
+![robo](screenshots/robo.png)
+
+#### set1 (classic robots)
+
+![set1](screenshots/set1.png)
+
+#### set2 (monsters)
+
+![set2](screenshots/set2.png)
+
+#### set3 (robot heads)
+
+![set3](screenshots/set3.png)
+
+#### set4 (cats)
+
+![set4](screenshots/set4.png)
+
+#### set5 (human avatars)
+
+![set5](screenshots/set5.png)
+
+#### set6 (cosmic apes)
+
+![set6](screenshots/set6.png)
+
 ## Repository layout
 
 - `src/` - Python sources (`identicon.py`, `styles.py`, `runtime.py`)
 - `third_party/robohash/` - vendored Robohash assembler and sprite sets
-- `tests/` - Python unit tests (`unittest`)
+- `screenshots/` - README sample grids (one PNG per style)
 - `debian/` - Debian packaging metadata
 - `po/` - gettext message catalogs
 - `man/` - AsciiDoc man page sources (`man/*.adoc`)

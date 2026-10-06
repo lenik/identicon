@@ -96,6 +96,11 @@ install_data(
     install_dir: pkgdocdir,
 )
 
+install_subdir(
+    'screenshots',
+    install_dir: pkgdocdir,
+)
+
 test(
     'python-unit',
     py,

@@ -42,11 +42,59 @@ identicon -s office -t robo -F jpg -o bot.jpg team-42
 identicon -t set4 -S 128 -o cat.png user@host
 ```
 
+### 示例图
+
+每张网格为标识符 `example-1` … `example-24`，边长 96×96。
+
+#### identicon
+
+![identicon](screenshots/identicon.png)
+
+#### wavatar
+
+![wavatar](screenshots/wavatar.png)
+
+#### monsterid
+
+![monsterid](screenshots/monsterid.png)
+
+#### retro
+
+![retro](screenshots/retro.png)
+
+#### robo
+
+![robo](screenshots/robo.png)
+
+#### set1（经典机器人）
+
+![set1](screenshots/set1.png)
+
+#### set2（怪物）
+
+![set2](screenshots/set2.png)
+
+#### set3（机器人头像）
+
+![set3](screenshots/set3.png)
+
+#### set4（猫）
+
+![set4](screenshots/set4.png)
+
+#### set5（人类头像）
+
+![set5](screenshots/set5.png)
+
+#### set6（宇宙猿）
+
+![set6](screenshots/set6.png)
+
 ## 仓库结构
 
 - `src/` - Python 源码（`identicon.py`、`styles.py`、`runtime.py`）
 - `third_party/robohash/` - 内嵌的 Robohash 拼装器与素材
-- `tests/` - Python 单元测试（`unittest`）
+- `screenshots/` - README 用的示例网格（每种风格一张 PNG）
 - `debian/` - Debian 打包元数据
 - `po/` - gettext 翻译目录
 - `man/` - AsciiDoc man 页源文件（`man/*.adoc`）
