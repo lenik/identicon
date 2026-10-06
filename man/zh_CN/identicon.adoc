@@ -1,0 +1,109 @@
+= identicon(1)
+Lenik <identicon@bodz.net>
+v{project-version}, {project-year}
+:doctype: manpage
+:manmanual: User Commands
+:mansource: identicon
+:man-linkstyle: blue R <>
+:nofooter:
+== 名称
+
+identicon - 根据标识符生成确定性头像图像
+
+== 语法
+
+*identicon* [_选项_]... _ID_
+
+== 描述
+
+根据 _ID_ 绘制方形头像。
+同一 _ID_（以及可选的盐）总会得到同一张图。
+
+_ID_ 与 *--salt* 在哈希前按 UTF-8 编码。
+未指定盐时，摘要为标识符的 SHA-256。
+指定盐时，摘要为以盐为密钥的 HMAC-SHA-256。
+
+除非 *--out* 或 *--format* 另有说明，否则以 PNG 写到标准输出。
+
+== 选项
+
+*-s, --salt* _SALT_::
+  将 _SALT_ 混入哈希，使同一标识符可以对应另一族头像。
+
+*-o, --out* _FILE_::
+  将图像写入 _FILE_ 而非标准输出。
+  未指定 *--format* 时，由文件名扩展名决定格式。
+  使用 *-* 表示标准输出。
+
+*-t, --type* _TYPE_::
+  头像风格，取下列之一：
+
+  *identicon*;;
+    万花筒几何图案（默认）。
+  *wavatar*;;
+    表情与背景色各异的卡通小脸。
+  *monsterid*;;
+    长相独特的彩色像素小怪物。
+  *retro*;;
+    红白机时代的 8-bit 像素人脸。
+  *robo*;;
+    超萌小机器人。
+
+*-F, --format* _FMT_::
+  图像格式，如 *png*、*jpg*、*gif*、*bmp*。
+  默认为 *png*，或 *--out* 的扩展名。
+
+*-S, --size* _PIXELS_::
+  边长像素。默认 256。允许范围 1 到 4096。
+
+*-b, --backcolor* _COLOR_::
+  背景色。可为 CSS 名称（*red*）、十六进制（*#f00*、*#ff0000*），或
+  *rgb()* / *hsl()* / *rgba()* / *hsla()*。
+  *transparent* 与 *none* 表示全透明（无 alpha 的格式会合成到白底上）。
+
+*-f, --force*::
+  若 _FILE_ 已存在则覆盖。
+
+*-v, --verbose*::
+  将类型、尺寸、格式与输出位置的摘要打印到标准错误。重复一次可打印哈希十六进制。
+
+*-q, --quiet*::
+  抑制 *--verbose* 会打印的消息。
+  同时给出 *--verbose* 与 *--quiet* 时，以 *--quiet* 为准。
+
+*-h, --help*::
+  打印用法并成功退出。
+
+*--version*::
+  打印版本与许可证信息并成功退出。
+
+== 退出状态
+
+*0*::
+  成功。
+
+*1*::
+  出错（无效选项、未加 *--force* 时目标文件已存在，或 I/O 错误）。
+
+== 示例
+
+在标准输出生成默认 identicon PNG::
+  identicon alice@example.com >alice.png
+
+写出 128 像素的 retro 人脸，必要时覆盖::
+  identicon -t retro -S 128 -o face.png -f bob
+
+带盐的机器人 JPEG::
+  identicon -s office -t robo -F jpg -o bot.jpg team-42
+
+== 作者
+
+由 {project-author} <{project-email}> 编写。
+
+== 版权
+
+Copyright (C) {project-year}.
+许可证 AGPL-3.0-or-later。
+这是自由软件：你可以在 GNU Affero 通用公共许可证条款下修改并再分发。
+在法律允许范围内不提供任何担保。
+完整文本及本项目反对 AI 剥削与 AI 霸权、拒绝无脑 MIT 式与政治幼稚 BSD 式许可证的补充条款，见源码发行中的 LICENSE。

@@ -8,7 +8,7 @@ from unittest.mock import patch
 
 from PIL import Image
 
-from commons import digest_for, parse_color, save_image
+from runtime import digest_for, parse_color, save_image
 from identicon import main
 from styles import TYPES, render
 

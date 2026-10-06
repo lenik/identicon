@@ -53,7 +53,16 @@ identicon_exe = custom_target(
     install_dir: bindir,
 )
 
-foreach mod : ['commons.py', 'styles.py']
+foreach mod : [
+    'runtime.py',
+    'pixgrid.py',
+    'ident_style.py',
+    'wavatar_style.py',
+    'monster_style.py',
+    'retro_style.py',
+    'robo_style.py',
+    'styles.py',
+]
     custom_target(
         mod,
         input: 'src' / mod,
@@ -78,25 +87,6 @@ install_data(
         'README-zh_CN.md',
     ],
     install_dir: pkgdocdir,
-)
-
-custom_target(
-    'identicon-man',
-    input: 'man/identicon.adoc',
-    output: 'identicon.1',
-    command: [
-        asciidoctor,
-        '-b', 'manpage',
-        '-a', 'project-version=' + meson.project_version(),
-        '-a', 'project-year=@0@'.format(project_year),
-        '-a', 'project-author=' + project_author,
-        '-a', 'project-email=' + project_email,
-        '-o', '@OUTPUT@',
-        '@INPUT@',
-    ],
-    build_by_default: true,
-    install: true,
-    install_dir: mandir / 'man1',
 )
 
 test(
@@ -134,17 +124,13 @@ run_target(
     'install-symlinks',
     command: [
         'bash',
-        '-euc', '''
-            prefix="@0@"
-            bindir="@1@"
-            datadir="@2@"
-            mandir="@3@"
-            mkdir -p "$bindir" "$datadir/bash-completion/completions" "$mandir/man1"
-            sudo ln -sfn "@BUILD_ROOT@/identicon" "$bindir/identicon"
-            sudo ln -sfn "@BUILD_ROOT@/identicon.1" "$mandir/man1/identicon.1"
-            sudo ln -sfn "@SOURCE_ROOT@/identicon.bash" "$datadir/bash-completion/completions/identicon"
-            printf "Symlinks installed under %s\n" "$prefix"
-        '''.format(get_option('prefix'), bindir, datadir, mandir),
+        meson.project_source_root() / 'scripts' / 'install-symlinks.sh',
+        meson.project_source_root(),
+        meson.project_build_root(),
+        get_option('prefix'),
+        bindir,
+        datadir,
+        mandir,
     ],
 )
 
@@ -152,20 +138,72 @@ run_target(
     'uninstall-symlinks',
     command: [
         'bash',
-        '-euc', '''
-            prefix="@0@"
-            bindir="@1@"
-            datadir="@2@"
-            mandir="@3@"
-            for p in "$bindir/identicon" "$mandir/man1/identicon.1" "$datadir/bash-completion/completions/identicon"
-            do
-                if [ -L "$p" ]; then
-                    sudo rm -f "$p"
-                    printf "Removed %s\n" "$p"
-                else
-                    printf "Skipped (not a symlink): %s\n" "$p"
-                fi
-            done
-        '''.format(get_option('prefix'), bindir, datadir, mandir),
+        meson.project_source_root() / 'scripts' / 'uninstall-symlinks.sh',
+        meson.project_source_root(),
+        meson.project_build_root(),
+        get_option('prefix'),
+        bindir,
+        datadir,
+        mandir,
     ],
 )
+
+puffs = [
+    'identicon',
+]
+foreach puff : puffs
+  custom_target(
+    puff + '-man',
+    input: 'man' / (puff + '.adoc'),
+    output: puff + '.1',
+    command: [
+      asciidoctor,
+      '-b', 'manpage',
+      '-a', 'project-version=' + meson.project_version(),
+      '-a', 'project-year=@0@'.format(project_year),
+      '-a', 'project-author=' + project_author,
+      '-a', 'project-email=' + project_email,
+      '-o', '@OUTPUT@',
+      '@INPUT@',
+    ],
+    build_by_default: true,
+    install: true,
+    install_dir: mandir / 'man1',
+  )
+endforeach
+
+man_locales = [
+    'ar',
+    'de',
+    'es',
+    'fr',
+    'it',
+    'ja',
+    'ko',
+    'zh_CN',
+]
+foreach loc : man_locales
+  man_loc = custom_target(
+    'identicon-man-' + loc,
+    input: 'man' / loc / 'identicon.adoc',
+    output: 'identicon-' + loc + '.1',
+    command: [
+      asciidoctor,
+      '-b', 'manpage',
+      '-a', 'project-version=' + meson.project_version(),
+      '-a', 'project-year=@0@'.format(project_year),
+      '-a', 'project-author=' + project_author,
+      '-a', 'project-email=' + project_email,
+      '-o', '@OUTPUT@',
+      '@INPUT@',
+    ],
+    build_by_default: true,
+  )
+  meson.add_install_script(
+    py,
+    '-c',
+    'import os, shutil, sys; src, rel = sys.argv[1], sys.argv[2]; root = os.environ.get("MESON_INSTALL_DESTDIR_PREFIX") or os.environ["MESON_INSTALL_PREFIX"]; dest = os.path.join(root, rel); os.makedirs(os.path.dirname(dest), exist_ok=True); shutil.copy2(src, dest)',
+    man_loc,
+    fs.relative_to(mandir, prefix) / loc / 'man1' / 'identicon.1',
+  )
+endforeach

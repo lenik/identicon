@@ -20,7 +20,9 @@ msgstr ""
 msgid ""
 "Usage: identicon [OPTION]... ID\n"
 "Generate a deterministic avatar image from ID.\n"
-msgstr "ব্যবহার: identicon [OPTION]... ID\nID থেকে নির্ণায়ক অবতার ছবি তৈরি করুন।\n"
+msgstr ""
+"ব্যবহার: identicon [OPTION]... ID\n"
+"ID থেকে নির্ণায়ক অবতার ছবি তৈরি করুন।\n"
 
 #: src/identicon.py:35
 msgid "mix SALT into the hash (UTF-8)\n"

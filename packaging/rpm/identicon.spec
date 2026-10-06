@@ -4,12 +4,15 @@
 %{!?version:%global version 0.0.0}
 %{!?srcversion:%global srcversion %{version}}
 
+%global debug_package %{nil}
+
 Name:           identicon
 Version:        %{version}
 Release:        1%{?dist}
-Summary:        Meson-based CLI project template with example app
+Summary:        generate deterministic avatar images from an identifier
 
 License:        AGPL-3.0-or-later
+BuildArch:      noarch
 URL:            https://github.com/lenik/identicon
 Packager:       Lenik <identicon@bodz.net>
 Source0:        %{name}-%{srcversion}.tar.xz
@@ -21,11 +24,13 @@ BuildRequires:  gettext
 BuildRequires:  asciidoctor
 
 Requires:       python3
+Requires:       python3-pillow
 
 %description
-identicon is a template repository for small Python command-line utilities.
-It currently ships the identicon example application and Debian packaging
-metadata, and includes Python unittest integration.
+identicon renders a square avatar from an ID string. Supported styles
+include kaleidoscopic identicons, cartoon wavatars, pixel monsters,
+8-bit retro faces, and small robots. Output may be PNG, JPEG, GIF, or
+BMP, to a file or standard output.
 
 %prep
 %setup -q -n %{name}-%{srcversion}
@@ -46,12 +51,12 @@ meson install -C build --destdir=%{buildroot}
 
 %files
 %{_bindir}/identicon
-%{_bindir}/common_lib.py
+%{_bindir}/*.py
 %{_datadir}/bash-completion/completions/identicon
 %{_mandir}/man1/identicon.1*
-%{_datadir}/doc/%{name}/
+%{_mandir}/*/man1/identicon.1*
 %{_datadir}/locale/*/LC_MESSAGES/identicon.mo
-
+%{_datadir}/doc/identicon/
 %changelog
 * Thu Aug 20 2026 Lenik <identicon@bodz.net>
 - Align spec with debian/control (Meson, AGPL-3.0-or-later).

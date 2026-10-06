@@ -1,0 +1,107 @@
+= identicon(1)
+Lenik <identicon@bodz.net>
+v{project-version}, {project-year}
+:doctype: manpage
+:manmanual: User Commands
+:mansource: identicon
+:man-linkstyle: blue R <>
+:nofooter:
+== 이름
+
+identicon - 식별자로부터 결정적인 아바타 이미지를 생성한다
+
+== 개요
+
+*identicon* [_옵션_]... _ID_
+
+== 설명
+
+_ID_ 로 정사각형 아바타를 그립니다.
+같은 _ID_ (및 선택적 솔트)는 항상 같은 그림이 됩니다.
+
+_ID_ 와 *--salt* 는 해시 전에 UTF-8 로 인코딩됩니다.
+솔트가 없으면 식별자의 SHA-256, 있으면 솔트를 키로 하는 HMAC-SHA-256 입니다.
+
+*--out* 또는 *--format* 이 없으면 PNG 를 표준 출력으로 씁니다.
+
+== 옵션
+
+*-s, --salt* _SALT_::
+  _SALT_ 를 해시에 섞어 같은 식별자가 다른 아바타 계열을 내게 합니다.
+
+*-o, --out* _FILE_::
+  표준 출력 대신 _FILE_ 에 씁니다.
+  *--format* 이 없으면 확장자로 형식을 고릅니다.
+  *-* 는 표준 출력입니다.
+
+*-t, --type* _TYPE_::
+  아바타 스타일. 다음 중 하나:
+
+  *identicon*;;
+    만화경 기하 무늬 (기본).
+  *wavatar*;;
+    표정과 배경색이 다른 만화 얼굴.
+  *monsterid*;;
+    생김새가 독특한 알록달록 픽셀 괴물.
+  *retro*;;
+    패미컴 시대의 8비트 픽셀 얼굴.
+  *robo*;;
+    귀여운 작은 로봇.
+
+*-F, --format* _FMT_::
+  *png*, *jpg*, *gif*, *bmp* 같은 이미지 형식.
+  기본은 *png* 또는 *--out* 의 확장자.
+
+*-S, --size* _PIXELS_::
+  한 변의 픽셀. 기본 256. 범위 1–4096.
+
+*-b, --backcolor* _COLOR_::
+  배경색. CSS 이름 (*red*), 16진 (*#f00*, *#ff0000*), 또는
+  *rgb()* / *hsl()* / *rgba()* / *hsla()*.
+  *transparent* 와 *none* 은 완전 투명 (알파가 없으면 흰색에 합성).
+
+*-f, --force*::
+  _FILE_ 이 있으면 덮어씁니다.
+
+*-v, --verbose*::
+  유형, 크기, 형식, 대상을 표준 오류에 요약합니다. 반복하면 해시 16진도 출력합니다.
+
+*-q, --quiet*::
+  *--verbose* 메시지를 숨깁니다. 둘 다 있으면 *--quiet* 가 이깁니다.
+
+*-h, --help*::
+  도움말을 보이고 성공적으로 종료합니다.
+
+*--version*::
+  버전과 라이선스를 보이고 성공적으로 종료합니다.
+
+== 종료 상태
+
+*0*::
+  성공.
+
+*1*::
+  오류 (잘못된 옵션, *--force* 없이 기존 파일, 또는 입출력 오류).
+
+== 예
+
+표준 출력으로 기본 identicon PNG::
+  identicon alice@example.com >alice.png
+
+128픽셀 retro 얼굴을 필요하면 덮어쓰기::
+  identicon -t retro -S 128 -o face.png -f bob
+
+솔트 로봇 JPEG::
+  identicon -s office -t robo -F jpg -o bot.jpg team-42
+
+== 저자
+
+{project-author} <{project-email}> 가 작성했습니다.
+
+== 저작권
+
+Copyright (C) {project-year}.
+라이선스 AGPL-3.0-or-later.
+이것은 자유 소프트웨어입니다. GNU Affero 일반 공중 라이선스 조건으로 변경하고 재배포할 수 있습니다.
+법이 허용하는 한 어떠한 보증도 없습니다.
+원본 배포의 LICENSE 에서 전문과, 이 프로젝트가 AI 착취와 패권에 반대하며 무분별한 MIT식 및 정치적으로 순진한 BSD식 라이선스를 거부한다는 보충 조항을 보십시오.

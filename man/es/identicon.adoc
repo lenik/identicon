@@ -1,0 +1,110 @@
+= identicon(1)
+Lenik <identicon@bodz.net>
+v{project-version}, {project-year}
+:doctype: manpage
+:manmanual: User Commands
+:mansource: identicon
+:man-linkstyle: blue R <>
+:nofooter:
+== Nombre
+
+identicon - generar una imagen de avatar determinista a partir de un identificador
+
+== Sinopsis
+
+*identicon* [_OPCIÓN_]... _ID_
+
+== Descripción
+
+Dibuja un avatar cuadrado a partir de _ID_.
+El mismo _ID_ (y sal opcional) produce siempre la misma imagen.
+
+_ID_ y *--salt* se codifican en UTF-8 antes del hash.
+Sin sal, el resumen es SHA-256 del identificador.
+Con sal, es HMAC-SHA-256 usando la sal como clave.
+
+La salida es PNG en la salida estándar salvo que *--out* o *--format* indiquen otra cosa.
+
+== Opciones
+
+*-s, --salt* _SALT_::
+  Mezcla _SALT_ en el hash para que el mismo identificador dé otra familia de avatares.
+
+*-o, --out* _FILE_::
+  Escribe la imagen en _FILE_ en lugar de la salida estándar.
+  Sin *--format*, la extensión elige el formato.
+  *-* es la salida estándar.
+
+*-t, --type* _TYPE_::
+  Estilo de avatar. Uno de:
+
+  *identicon*;;
+    Motivo geométrico caleidoscópico (predeterminado).
+  *wavatar*;;
+    Caras de dibujos con expresiones y fondos distintos.
+  *monsterid*;;
+    Monstruos de píxeles coloridos y aspecto distintivo.
+  *retro*;;
+    Caras de píxeles de 8 bits de la era NES.
+  *robo*;;
+    Pequeños robots adorables.
+
+*-F, --format* _FMT_::
+  Formato de imagen como *png*, *jpg*, *gif* o *bmp*.
+  El valor predeterminado es *png*, o la extensión de *--out*.
+
+*-S, --size* _PIXELS_::
+  Lado en píxeles. Predeterminado 256. Intervalo 1 a 4096.
+
+*-b, --backcolor* _COLOR_::
+  Color de fondo. Nombre CSS (*red*), hexadecimal (*#f00*, *#ff0000*) o
+  *rgb()* / *hsl()* / *rgba()* / *hsla()*.
+  *transparent* y *none* piden fondo totalmente transparente (compuesto sobre blanco sin alfa).
+
+*-f, --force*::
+  Sobrescribe _FILE_ si ya existe.
+
+*-v, --verbose*::
+  Resume tipo, tamaño, formato y destino en el error estándar.
+  Repetir para el hash en hexadecimal.
+
+*-q, --quiet*::
+  Omite los mensajes de *--verbose*.
+  Si van ambos, gana *--quiet*.
+
+*-h, --help*::
+  Muestra la ayuda y sale con éxito.
+
+*--version*::
+  Muestra la versión y la licencia y sale con éxito.
+
+== Estado de salida
+
+*0*::
+  Éxito.
+
+*1*::
+  Error (opciones inválidas, archivo existente sin *--force*, o error de E/S).
+
+== Ejemplos
+
+Identicon predeterminado en PNG a la salida estándar::
+  identicon alice@example.com >alice.png
+
+Cara retro de 128 píxeles, sobrescribiendo si hace falta::
+  identicon -t retro -S 128 -o face.png -f bob
+
+Robot JPEG con sal::
+  identicon -s office -t robo -F jpg -o bot.jpg team-42
+
+== Autor
+
+Escrito por {project-author} <{project-email}>.
+
+== Copyright
+
+Copyright (C) {project-year}.
+Licencia AGPL-3.0-or-later.
+Esto es software libre: puede modificarlo y redistribuirlo según la GNU Affero General Public License.
+NO HAY GARANTÍA, en la medida permitida por la ley.
+Véase LICENSE en la distribución fuente para el texto completo y cláusulas adicionales contra la explotación y la hegemonía de la IA, y contra licencias MIT irreflexivas y BSD políticamente ingenuas.

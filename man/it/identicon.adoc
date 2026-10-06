@@ -1,0 +1,110 @@
+= identicon(1)
+Lenik <identicon@bodz.net>
+v{project-version}, {project-year}
+:doctype: manpage
+:manmanual: User Commands
+:mansource: identicon
+:man-linkstyle: blue R <>
+:nofooter:
+== Nome
+
+identicon - genera un’immagine avatar deterministica da un identificatore
+
+== Sinossi
+
+*identicon* [_OPZIONE_]... _ID_
+
+== Descrizione
+
+Disegna un avatar quadrato da _ID_.
+Lo stesso _ID_ (e sale opzionale) produce sempre la stessa immagine.
+
+_ID_ e *--salt* sono codificati in UTF-8 prima dell’hash.
+Senza sale il digest è SHA-256 dell’identificatore.
+Con sale è HMAC-SHA-256 con il sale come chiave.
+
+L’uscita è PNG sullo standard output salvo *--out* o *--format*.
+
+== Opzioni
+
+*-s, --salt* _SALT_::
+  Mescola _SALT_ nell’hash così lo stesso identificatore dà un’altra famiglia di avatar.
+
+*-o, --out* _FILE_::
+  Scrive l’immagine su _FILE_ invece dello standard output.
+  Senza *--format* l’estensione sceglie il formato.
+  *-* è lo standard output.
+
+*-t, --type* _TYPE_::
+  Stile dell’avatar. Uno tra:
+
+  *identicon*;;
+    Motivo geometrico caleidoscopico (predefinito).
+  *wavatar*;;
+    Volti a fumetti con espressioni e sfondi diversi.
+  *monsterid*;;
+    Mostri pixel colorati dal look distintivo.
+  *retro*;;
+    Volti pixel 8 bit dell’era NES.
+  *robo*;;
+    Piccoli robot carini.
+
+*-F, --format* _FMT_::
+  Formato immagine come *png*, *jpg*, *gif* o *bmp*.
+  Predefinito *png*, o l’estensione di *--out*.
+
+*-S, --size* _PIXELS_::
+  Lato in pixel. Predefinito 256. Intervallo 1–4096.
+
+*-b, --backcolor* _COLOR_::
+  Colore di sfondo. Nome CSS (*red*), esadecimale (*#f00*, *#ff0000*) o
+  *rgb()* / *hsl()* / *rgba()* / *hsla()*.
+  *transparent* e *none* chiedono uno sfondo totalmente trasparente (composito su bianco senza alfa).
+
+*-f, --force*::
+  Sovrascrive _FILE_ se esiste già.
+
+*-v, --verbose*::
+  Riassume tipo, dimensione, formato e destinazione sullo standard error.
+  Ripetere per l’hash in esadecimale.
+
+*-q, --quiet*::
+  Sopprime i messaggi di *--verbose*.
+  Se entrambi sono dati, vince *--quiet*.
+
+*-h, --help*::
+  Mostra l’aiuto ed esce con successo.
+
+*--version*::
+  Mostra versione e licenza ed esce con successo.
+
+== Stato di uscita
+
+*0*::
+  Successo.
+
+*1*::
+  Errore (opzioni non valide, file esistente senza *--force*, o errore di I/O).
+
+== Esempi
+
+Identicon predefinito PNG sullo standard output::
+  identicon alice@example.com >alice.png
+
+Volto retro a 128 pixel, sovrascrittura se serve::
+  identicon -t retro -S 128 -o face.png -f bob
+
+Robot JPEG con sale::
+  identicon -s office -t robo -F jpg -o bot.jpg team-42
+
+== Autore
+
+Scritto da {project-author} <{project-email}>.
+
+== Copyright
+
+Copyright (C) {project-year}.
+Licenza AGPL-3.0-or-later.
+Questo è software libero: puoi modificarlo e ridistribuirlo secondo la GNU Affero General Public License.
+NON c’è ALCUNA GARANZIA, nei limiti consentiti dalla legge.
+Vedi LICENSE nella distribuzione sorgente per il testo completo e le clausole aggiuntive contro lo sfruttamento e l’egemonia dell’IA, e contro le licenze MIT sconsiderate e BSD politicamente ingenue.

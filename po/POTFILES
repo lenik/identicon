@@ -1,3 +1,9 @@
 src/identicon.py
-src/commons.py
+src/runtime.py
 src/styles.py
+src/ident_style.py
+src/wavatar_style.py
+src/monster_style.py
+src/retro_style.py
+src/robo_style.py
+src/pixgrid.py

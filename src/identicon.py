@@ -9,7 +9,7 @@ import os
 import sys
 from typing import TextIO
 
-from commons import (
+from runtime import (
     digest_for,
     format_from_path,
     init_i18n,

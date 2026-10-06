@@ -1,0 +1,107 @@
+= identicon(1)
+Lenik <identicon@bodz.net>
+v{project-version}, {project-year}
+:doctype: manpage
+:manmanual: User Commands
+:mansource: identicon
+:man-linkstyle: blue R <>
+:nofooter:
+== 名前
+
+identicon - 識別子から決定的なアバター画像を生成する
+
+== 書式
+
+*identicon* [_オプション_]... _ID_
+
+== 説明
+
+_ID_ から正方形のアバターを描画します。
+同じ _ID_（および任意のソルト）は常に同じ絵になります。
+
+_ID_ と *--salt* はハッシュ前に UTF-8 で符号化します。
+ソルトなしでは識別子の SHA-256、ソルトありではソルトを鍵とする HMAC-SHA-256 です。
+
+*--out* または *--format* が無い限り、PNG を標準出力へ書き出します。
+
+== オプション
+
+*-s, --salt* _SALT_::
+  _SALT_ をハッシュに混ぜ、同じ識別子から別系列のアバターを得ます。
+
+*-o, --out* _FILE_::
+  標準出力ではなく _FILE_ へ書き出します。
+  *--format* 省略時は拡張子から形式を決めます。
+  *-* は標準出力です。
+
+*-t, --type* _TYPE_::
+  アバターの様式。次のいずれか：
+
+  *identicon*;;
+    万華鏡状の幾何模様（既定）。
+  *wavatar*;;
+    表情と背景色が異なる漫画風の顔。
+  *monsterid*;;
+    見た目の個性的な色つきピクセルの怪物。
+  *retro*;;
+    ファミコン時代の 8 ビット画素の顔。
+  *robo*;;
+    かわいい小さなロボット。
+
+*-F, --format* _FMT_::
+  *png*、*jpg*、*gif*、*bmp* などの画像形式。
+  既定は *png*、または *--out* の拡張子。
+
+*-S, --size* _PIXELS_::
+  一辺のピクセル数。既定 256。範囲は 1 から 4096。
+
+*-b, --backcolor* _COLOR_::
+  背景色。CSS 名（*red*）、十六進（*#f00*、*#ff0000*）、または
+  *rgb()* / *hsl()* / *rgba()* / *hsla()*。
+  *transparent* と *none* は完全透明（アルファ非対応形式では白に合成）。
+
+*-f, --force*::
+  _FILE_ が既にあれば上書きします。
+
+*-v, --verbose*::
+  種類・寸法・形式・出力先の要約を標準エラーへ。繰り返すとハッシュの十六進も出します。
+
+*-q, --quiet*::
+  *--verbose* のメッセージを抑えます。両方指定時は *--quiet* が勝ちます。
+
+*-h, --help*::
+  使い方を出して成功終了します。
+
+*--version*::
+  版とライセンスを出して成功終了します。
+
+== 終了ステータス
+
+*0*::
+  成功。
+
+*1*::
+  失敗（不正なオプション、*--force* なしで既存ファイル、または入出力エラー）。
+
+== 例
+
+標準出力へ既定の identicon PNG::
+  identicon alice@example.com >alice.png
+
+128 画素の retro 顔を必要なら上書き::
+  identicon -t retro -S 128 -o face.png -f bob
+
+ソルト付きロボット JPEG::
+  identicon -s office -t robo -F jpg -o bot.jpg team-42
+
+== 著者
+
+{project-author} <{project-email}> が書きました。
+
+== 著作権
+
+Copyright (C) {project-year}.
+ライセンス AGPL-3.0-or-later。
+これは自由ソフトウェアです。GNU Affero 一般公衆ライセンスの条件下で改変と再配布ができます。
+法律の許す範囲で無保証です。
+LICENSE に全文と、本プロジェクトが AI 搾取・覇権に反対し無思慮な MIT 系および政治的に無邪気な BSD 系許諾を拒む旨の補足があります。

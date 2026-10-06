@@ -1,0 +1,110 @@
+= identicon(1)
+Lenik <identicon@bodz.net>
+v{project-version}, {project-year}
+:doctype: manpage
+:manmanual: User Commands
+:mansource: identicon
+:man-linkstyle: blue R <>
+:nofooter:
+== Name
+
+identicon - deterministisches Avatarbild aus einer Kennung erzeugen
+
+== Übersicht
+
+*identicon* [_OPTION_]... _ID_
+
+== Beschreibung
+
+Zeichnet ein quadratisches Avatarbild aus _ID_.
+Dieselbe _ID_ (und optionales Salz) ergibt immer dasselbe Bild.
+
+_ID_ und *--salt* werden vor dem Hashen als UTF-8 kodiert.
+Ohne Salz ist der Digest SHA-256 der Kennung.
+Mit Salz ist er HMAC-SHA-256 mit dem Salz als Schlüssel.
+
+Die Ausgabe ist PNG auf der Standardausgabe, außer *--out* oder *--format* sagen etwas anderes.
+
+== Optionen
+
+*-s, --salt* _SALT_::
+  Mischt _SALT_ in den Hash, damit dieselbe Kennung eine andere Avatarfamilie ergibt.
+
+*-o, --out* _FILE_::
+  Schreibt das Bild nach _FILE_ statt auf die Standardausgabe.
+  Ohne *--format* bestimmt die Dateiendung das Format.
+  *-* steht für die Standardausgabe.
+
+*-t, --type* _TYPE_::
+  Avatarstil. Einer von:
+
+  *identicon*;;
+    Kaleidoskopisches geometrisches Muster (Standard).
+  *wavatar*;;
+    Comicgesichter mit wechselnden Ausdrücken und Hintergründen.
+  *monsterid*;;
+    Bunte Pixelmonster mit unverwechselbarem Aussehen.
+  *retro*;;
+    8-Bit-Pixelgesichter im NES-Stil.
+  *robo*;;
+    Niedliche kleine Roboter.
+
+*-F, --format* _FMT_::
+  Bildformat wie *png*, *jpg*, *gif* oder *bmp*.
+  Standard ist *png* oder die Endung von *--out*.
+
+*-S, --size* _PIXELS_::
+  Kantenlänge in Pixeln. Standard 256. Bereich 1 bis 4096.
+
+*-b, --backcolor* _COLOR_::
+  Hintergrundfarbe. CSS-Name (*red*), Hex (*#f00*, *#ff0000*) oder
+  *rgb()* / *hsl()* / *rgba()* / *hsla()*.
+  *transparent* und *none* sind voll transparent (ohne Alpha auf Weiß kompositiert).
+
+*-f, --force*::
+  Überschreibt _FILE_, falls vorhanden.
+
+*-v, --verbose*::
+  Kurze Zusammenfassung von Typ, Größe, Format und Ziel auf Standardfehler.
+  Wiederholen für den Hash in Hex.
+
+*-q, --quiet*::
+  Unterdrückt Meldungen von *--verbose*.
+  Bei beiden gewinnt *--quiet*.
+
+*-h, --help*::
+  Zeigt die Kurzhilfe und beendet erfolgreich.
+
+*--version*::
+  Zeigt Version und Lizenz und beendet erfolgreich.
+
+== Exit-Status
+
+*0*::
+  Erfolg.
+
+*1*::
+  Fehler (ungültige Optionen, vorhandene Datei ohne *--force*, oder E/A-Fehler).
+
+== Beispiele
+
+Standard-Identicon als PNG auf Standardausgabe::
+  identicon alice@example.com >alice.png
+
+128-Pixel-Retrogesicht, bei Bedarf überschreiben::
+  identicon -t retro -S 128 -o face.png -f bob
+
+Gesalzener Roboter als JPEG::
+  identicon -s office -t robo -F jpg -o bot.jpg team-42
+
+== Autor
+
+Geschrieben von {project-author} <{project-email}>.
+
+== Copyright
+
+Copyright (C) {project-year}.
+Lizenz AGPL-3.0-or-later.
+Dies ist freie Software: Sie dürfen sie unter den Bedingungen der GNU Affero General Public License ändern und weitergeben.
+Es gibt KEINE GARANTIE, soweit gesetzlich zulässig.
+Siehe LICENSE in der Quellenverteilung für den vollen Text und ergänzende Klauseln gegen KI-Ausbeutung und KI-Hegemonie sowie gegen gedankenlose MIT-artige und politisch naive BSD-artige Lizenzen.

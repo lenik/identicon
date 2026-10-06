@@ -20,7 +20,9 @@ msgstr ""
 msgid ""
 "Usage: identicon [OPTION]... ID\n"
 "Generate a deterministic avatar image from ID.\n"
-msgstr "பயன்: identicon [OPTION]... ID\nID-இலிருந்து நிர்ணயமான அவதாரப் படத்தை உருவாக்கும்.\n"
+msgstr ""
+"பயன்: identicon [OPTION]... ID\n"
+"ID-இலிருந்து நிர்ணயமான அவதாரப் படத்தை உருவாக்கும்.\n"
 
 #: src/identicon.py:35
 msgid "mix SALT into the hash (UTF-8)\n"

@@ -20,7 +20,9 @@ msgstr ""
 msgid ""
 "Usage: identicon [OPTION]... ID\n"
 "Generate a deterministic avatar image from ID.\n"
-msgstr "Pemakaian: identicon [OPSI]... ID\nHasilkan gambar avatar deterministik dari ID.\n"
+msgstr ""
+"Pemakaian: identicon [OPSI]... ID\n"
+"Hasilkan gambar avatar deterministik dari ID.\n"
 
 #: src/identicon.py:35
 msgid "mix SALT into the hash (UTF-8)\n"
