@@ -1,18 +1,20 @@
 Source: identicon
-Section: utils
+Section: graphics
 Priority: optional
-Maintainer: Lenik <identicon@bodz.net>
-Build-Depends: debhelper-compat (= 13), meson, ninja-build, python3, gettext, asciidoctor
+Maintainer: Lenik (谢继雷) <identicon@bodz.net>
+Build-Depends: debhelper-compat (= 13), meson, ninja-build, python3, python3-pil, gettext, asciidoctor
 Standards-Version: 4.6.0
 Homepage: https://github.com/lenik/identicon
 Rules-Requires-Root: no
 
 Package: identicon
-Architecture: any
-Depends: 
-    python3, 
+Architecture: all
+Depends:
+    python3,
+    python3-pil,
     ${misc:Depends}
-Description: Meson-based CLI project template with example app
- identicon is a template repository for small Python command-line utilities.
- It currently ships the identicon example application and Debian packaging
- metadata, and includes Python unittest integration.
+Description: generate deterministic avatar images from an identifier
+ identicon renders a square avatar from an ID string. Supported styles
+ include kaleidoscopic identicons, cartoon wavatars, pixel monsters,
+ 8-bit retro faces, and small robots. Output may be PNG, JPEG, GIF, or
+ BMP, to a file or standard output.

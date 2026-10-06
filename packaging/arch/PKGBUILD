@@ -3,12 +3,12 @@
 pkgname=identicon
 pkgver=0.0.0
 pkgrel=1
-pkgdesc="Meson-based CLI template"
+pkgdesc="Generate deterministic avatar images from an identifier"
 arch=('any')
 url="https://github.com/lenik/identicon"
 license=('AGPL-3.0-or-later')
-depends=('bash')
-makedepends=('meson' 'ninja' 'asciidoctor')
+depends=('python' 'python-pillow')
+makedepends=('meson' 'ninja' 'asciidoctor' 'python-pillow')
 source=()
 sha256sums=()
 

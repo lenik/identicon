@@ -1,6 +1,6 @@
 Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Upstream-Name: identicon
-Upstream-Contact: Lenik <identicon@bodz.net>
+Upstream-Contact: Lenik (谢继雷) <identicon@bodz.net>
 Source: https://github.com/lenik/identicon
 
 Files: *
